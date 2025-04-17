@@ -1,0 +1,57 @@
+// Color palette
+$color-primary: #81b29a;
+$color-secondary: #006876;
+$color-bg-primary: #2f4858;
+$color-bg-secondary: #3e5c63;
+$color-text-primary: #f8f9fa;
+$color-text-secondary: #343a40;
+$color-success: #28a745;
+$color-error: #dc3545;
+$color-warning: #ffc107;
+$color-info: #17a2b8;
+$color-black: #000000;
+$color-white: #ffffff;
+
+// Background
+.bg-primary {
+  background-color: $color-bg-primary;
+}
+
+.bg-secondary {
+  background-color: $color-bg-secondary;
+}
+
+// Text
+.text-primary {
+  color: $color-text-primary;
+}
+
+.text-secondary {
+  color: $color-text-secondary;
+}
+
+// Border
+.border-primary {
+  border-color: $color-primary;
+}
+
+.border-secondary {
+  border-color: $color-secondary;
+}
+
+// Others
+.success {
+  background-color: $color-success;
+}
+
+.error {
+  background-color: $color-error;
+}
+
+.warning {
+  background-color: $color-warning;
+}
+
+.info {
+  background-color: $color-info;
+}
