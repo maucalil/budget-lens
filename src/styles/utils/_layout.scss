@@ -1,69 +1,149 @@
 @use 'breakpoints' as *;
 
 // Base layout
-.flex { display: flex; }
+.flex {
+  display: flex;
+}
 
-.inline-flex { display: inline-flex; }
+.inline-flex {
+  display: inline-flex;
+}
 
-.grid { display: grid; }
+.grid {
+  display: grid;
+}
 
-.block { display: block; }
+.block {
+  display: block;
+}
 
-.inline-block { display: inline-block; }
+.inline-block {
+  display: inline-block;
+}
 
-.hidden { display: none; }
+.hidden {
+  display: none;
+}
 
 // Flex directions
-.flex-row    { flex-direction: row; }
-.flex-column { flex-direction: column; }
+.flex-row {
+  flex-direction: row;
+}
+.flex-column {
+  flex-direction: column;
+}
 
 // Justify content
-.justify-start   { justify-content: flex-start; }
-.justify-center  { justify-content: center; }
-.justify-end     { justify-content: flex-end; }
-.justify-between { justify-content: space-between; }
-.justify-around  { justify-content: space-around; }
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-around {
+  justify-content: space-around;
+}
 
 // Align items
-.items-start   { align-items: flex-start; }
-.items-center  { align-items: center; }
-.items-end     { align-items: flex-end; }
-.items-stretch { align-items: stretch; }
+.items-start {
+  align-items: flex-start;
+}
+.items-center {
+  align-items: center;
+}
+.items-end {
+  align-items: flex-end;
+}
+.items-stretch {
+  align-items: stretch;
+}
 
 // Gap
-.gap-1 { gap: 0.25rem; }
-.gap-2 { gap: 0.5rem; }
-.gap-3 { gap: 1rem; }
-.gap-4 { gap: 2rem; }
+.gap-1 {
+  gap: 0.25rem;
+}
+.gap-2 {
+  gap: 0.5rem;
+}
+.gap-3 {
+  gap: 1rem;
+}
+.gap-4 {
+  gap: 2rem;
+}
 
 // Responsive variants
 @each $name, $size in $breakpoints {
   @include respond-min($name) {
-    .flex-#{$name}         { display: flex; }
-    .inline-flex-#{$name}  { display: inline-flex; }
-    .grid-#{$name}         { display: grid; }
-    .block-#{$name}        { display: block; }
-    .hidden-#{$name}       { display: none; }
+    .flex-#{$name} {
+      display: flex;
+    }
+    .inline-flex-#{$name} {
+      display: inline-flex;
+    }
+    .grid-#{$name} {
+      display: grid;
+    }
+    .block-#{$name} {
+      display: block;
+    }
+    .hidden-#{$name} {
+      display: none;
+    }
 
-    .flex-row-#{$name}     { flex-direction: row; }
-    .flex-column-#{$name}  { flex-direction: column; }
+    .flex-row-#{$name} {
+      flex-direction: row;
+    }
+    .flex-column-#{$name} {
+      flex-direction: column;
+    }
 
-    .justify-start-#{$name}    { justify-content: flex-start; }
-    .justify-center-#{$name}   { justify-content: center; }
-    .justify-end-#{$name}      { justify-content: flex-end; }
-    .justify-between-#{$name}  { justify-content: space-between; }
-    .justify-around-#{$name}   { justify-content: space-around; }
+    .justify-start-#{$name} {
+      justify-content: flex-start;
+    }
+    .justify-center-#{$name} {
+      justify-content: center;
+    }
+    .justify-end-#{$name} {
+      justify-content: flex-end;
+    }
+    .justify-between-#{$name} {
+      justify-content: space-between;
+    }
+    .justify-around-#{$name} {
+      justify-content: space-around;
+    }
 
-    .items-start-#{$name}    { align-items: flex-start; }
-    .items-center-#{$name}   { align-items: center; }
-    .items-end-#{$name}      { align-items: flex-end; }
-    .items-stretch-#{$name}  { align-items: stretch; }
+    .items-start-#{$name} {
+      align-items: flex-start;
+    }
+    .items-center-#{$name} {
+      align-items: center;
+    }
+    .items-end-#{$name} {
+      align-items: flex-end;
+    }
+    .items-stretch-#{$name} {
+      align-items: stretch;
+    }
 
-    .gap-1-#{$name} { gap: 0.25rem; }
-    .gap-2-#{$name} { gap: 0.5rem; }
-    .gap-3-#{$name} { gap: 1rem; }
-    .gap-4-#{$name} { gap: 2rem; }
+    .gap-1-#{$name} {
+      gap: 0.25rem;
+    }
+    .gap-2-#{$name} {
+      gap: 0.5rem;
+    }
+    .gap-3-#{$name} {
+      gap: 1rem;
+    }
+    .gap-4-#{$name} {
+      gap: 2rem;
+    }
   }
 }
-
-  

@@ -1,9 +1,9 @@
-// Color palette
-$color-primary: #0F5959;
-$color-secondary: #1D7373;
+// SCSS variables (for static usage in Sass functions/mixins)
+$color-primary: #0f5959;
+$color-secondary: #1d7373;
 $color-bg-primary: #042326;
-$color-bg-secondary: #0A3A40; // #0F5959
-$color-text-primary: #CACACA;
+$color-bg-secondary: #0a3a40;
+$color-text-primary: #cacaca;
 $color-text-secondary: #878787;
 $color-success: #28a745;
 $color-error: #dc3545;
@@ -12,34 +12,23 @@ $color-info: #17a2b8;
 $color-black: #000000;
 $color-white: #ffffff;
 
-// Background
-.bg-primary {
-  background-color: $color-bg-primary;
+// CSS custom properties (for dynamic usage in components)
+:root {
+  --color-primary: #{$color-primary};
+  --color-secondary: #{$color-secondary};
+  --color-text-primary: #{$color-text-primary};
+  --color-text-secondary: #{$color-text-secondary};
+  --color-bg-primary: #{$color-bg-primary};
+  --color-bg-secondary: #{$color-bg-secondary};
+  --color-success: #{$color-success};
+  --color-error: #{$color-error};
+  --color-warning: #{$color-warning};
+  --color-info: #{$color-info};
+  --color-black: #{$color-black};
+  --color-white: #{$color-white};
 }
 
-.bg-secondary {
-  background-color: $color-bg-secondary;
-}
-
-// Text
-.text-primary {
-  color: $color-text-primary;
-}
-
-.text-secondary {
-  color: $color-text-secondary;
-}
-
-// Border
-.border-primary {
-  border-color: $color-primary;
-}
-
-.border-secondary {
-  border-color: $color-secondary;
-}
-
-// Others
+// Utility
 .success {
   background-color: $color-success;
 }
