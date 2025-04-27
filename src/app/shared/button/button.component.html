@@ -1,0 +1,10 @@
+<button
+  [ngClass]="{
+    'btn-primary': type === 'primary',
+    'btn-secondary': type === 'secondary',
+  }"
+  [disabled]="disabled"
+  (click)="handleClick()"
+  class="inline-flex justify-center items-center p-3">
+  <ng-content></ng-content>
+</button>

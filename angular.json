@@ -29,7 +29,7 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.scss", "src/styles/utils/index.scss"],
+            "styles": ["src/styles.scss"],
             "stylePreprocessorOptions": {
               "includePaths": ["src"]
             },

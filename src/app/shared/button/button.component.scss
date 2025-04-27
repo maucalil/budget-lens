@@ -1,0 +1,44 @@
+@use "sass:color";
+@use 'styles/utils/colors' as *;
+
+button {
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+
+  // Disabled state
+  &[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  &.btn-primary {
+    color: var(--color-text-primary);
+    background-color: var(--color-primary);
+    
+    &:hover:not([disabled]) {
+      background-color:  color.adjust($color-primary, $lightness: -5%)
+    }
+    
+    &:active:not([disabled]) {
+      background-color: color.adjust($color-primary, $lightness: -8%)
+    }
+  }
+
+  &.btn-secondary {
+    color: var(--color-text-secondary);
+    background-color: var(--color-secondary);
+    
+    &:hover:not([disabled]) {
+      background-color:  color.adjust($color-secondary, $lightness: -5%)
+    }
+    
+    &:active:not([disabled]) {
+      background-color: color.adjust($color-secondary, $lightness: -10%)
+    }
+  }
+}
