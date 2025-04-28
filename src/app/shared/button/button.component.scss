@@ -1,4 +1,4 @@
-@use "sass:color";
+@use 'sass:color';
 @use 'styles/utils/colors' as *;
 
 button {
@@ -7,38 +7,41 @@ button {
   cursor: pointer;
   position: relative;
   font-size: 1rem;
+  font-weight: 600;
+  min-width: 128px;
   transition: all 0.2s ease;
 
-  // Disabled state
-  &[disabled] {
-    opacity: 0.6;
-    cursor: not-allowed;
-    box-shadow: none;
-  }
-
   &.btn-primary {
-    color: var(--color-text-primary);
-    background-color: var(--color-primary);
-    
+    color: $color-text-primary;
+    background-color: $color-primary;
+
     &:hover:not([disabled]) {
-      background-color:  color.adjust($color-primary, $lightness: -5%)
+      background-color: color.adjust($color-primary, $lightness: -5%);
     }
-    
+
     &:active:not([disabled]) {
-      background-color: color.adjust($color-primary, $lightness: -8%)
+      background-color: color.adjust($color-primary, $lightness: -8%);
     }
   }
 
   &.btn-secondary {
-    color: var(--color-text-secondary);
-    background-color: var(--color-secondary);
-    
+    color: $color-secondary;
+    background-color: $color-text-primary;
+
     &:hover:not([disabled]) {
-      background-color:  color.adjust($color-secondary, $lightness: -5%)
+      background-color: color.adjust($color-text-primary, $lightness: -10%);
     }
-    
+
     &:active:not([disabled]) {
-      background-color: color.adjust($color-secondary, $lightness: -10%)
+      background-color: color.adjust($color-text-primary, $lightness: -20%);
     }
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    box-shadow: none;
+    background-color: $color-grey;
+    color: $color-white;
+    font-weight: 400;
   }
 }
