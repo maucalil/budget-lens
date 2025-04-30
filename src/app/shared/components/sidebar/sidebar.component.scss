@@ -1,0 +1,18 @@
+nav {
+  background-color: var(--color-bg-secondary);
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  border-radius: 0.5rem;
+  transition: color 0.3 ease;
+
+  &:hover,
+  &.active {
+    background-color: var(--color-secondary);
+    color: var(--color-text-primary);
+  }
+}

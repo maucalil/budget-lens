@@ -78,6 +78,23 @@
   gap: 2rem;
 }
 
+// Flex-grow, shrink, basis utilities
+@for $i from 1 through 5 {
+  .flex-#{$i} {
+    flex: #{$i};
+  }
+}
+
+.flex-auto {
+  flex: 1 1 auto;
+}
+.flex-initial {
+  flex: 0 1 auto;
+}
+.flex-none {
+  flex: none;
+}
+
 // Responsive variants
 @each $name, $size in $breakpoints {
   @include respond-min($name) {
@@ -144,6 +161,25 @@
     }
     .gap-4-#{$name} {
       gap: 2rem;
+    }
+
+    // Flex-grow/shrink/basis responsive variants
+    @for $i from 1 through 12 {
+      .flex-#{$i}-#{$name} {
+        flex: #{$i};
+      }
+    }
+
+    .flex-auto-#{$name} {
+      flex: 1 1 auto;
+    }
+
+    .flex-initial-#{$name} {
+      flex: 0 1 auto;
+    }
+
+    .flex-none-#{$name} {
+      flex: none;
     }
   }
 }

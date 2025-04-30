@@ -63,6 +63,87 @@ $space-scale: (
   }
 }
 
+// Last-child spacing variants
+@each $key, $value in $space-scale {
+  // Margin
+  .last\:m-#{$key} {
+    &:last-child {
+      margin: $value;
+    }
+  }
+  .last\:mt-#{$key} {
+    &:last-child {
+      margin-top: $value;
+    }
+  }
+  .last\:mr-#{$key} {
+    &:last-child {
+      margin-right: $value;
+    }
+  }
+  .last\:mb-#{$key} {
+    &:last-child {
+      margin-bottom: $value;
+    }
+  }
+  .last\:ml-#{$key} {
+    &:last-child {
+      margin-left: $value;
+    }
+  }
+  .last\:mx-#{$key} {
+    &:last-child {
+      margin-left: $value;
+      margin-right: $value;
+    }
+  }
+  .last\:my-#{$key} {
+    &:last-child {
+      margin-top: $value;
+      margin-bottom: $value;
+    }
+  }
+
+  // Padding
+  .last\:p-#{$key} {
+    &:last-child {
+      padding: $value;
+    }
+  }
+  .last\:pt-#{$key} {
+    &:last-child {
+      padding-top: $value;
+    }
+  }
+  .last\:pr-#{$key} {
+    &:last-child {
+      padding-right: $value;
+    }
+  }
+  .last\:pb-#{$key} {
+    &:last-child {
+      padding-bottom: $value;
+    }
+  }
+  .last\:pl-#{$key} {
+    &:last-child {
+      padding-left: $value;
+    }
+  }
+  .last\:px-#{$key} {
+    &:last-child {
+      padding-left: $value;
+      padding-right: $value;
+    }
+  }
+  .last\:py-#{$key} {
+    &:last-child {
+      padding-top: $value;
+      padding-bottom: $value;
+    }
+  }
+}
+
 // Responsive variants
 @each $breakpoint, $size in $breakpoints {
   @include respond-min($breakpoint) {

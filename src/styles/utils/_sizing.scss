@@ -1,0 +1,39 @@
+$size-scale: (
+  0: 0rem,
+  4: 1rem,
+  8: 2rem,
+  16: 4rem,
+  48: 12rem,
+  full: 100%,
+  screen: 100vh,
+);
+
+// Width utilities
+@each $key, $value in $size-scale {
+  .w-#{$key} {
+    width: $value;
+  }
+
+  .min-w-#{$key} {
+    min-width: $value;
+  }
+
+  .max-w-#{$key} {
+    max-width: $value;
+  }
+}
+
+// Height utilities
+@each $key, $value in $size-scale {
+  .h-#{$key} {
+    height: $value;
+  }
+
+  .min-h-#{$key} {
+    min-height: $value;
+  }
+
+  .max-h-#{$key} {
+    max-height: $value;
+  }
+}
