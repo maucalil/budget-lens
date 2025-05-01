@@ -6,13 +6,13 @@ $color-grey: rgba($color-white, 0.12);
 // Brand Colors
 $color-primary: #1d7373;
 $color-primary-variant: #0f5959;
-$color-secondary: #1E88E5;
-$color-secondary-variant: #1565C0;
+$color-secondary: #1e88e5;
+$color-secondary-variant: #1565c0;
 
 // Background and surface
 $color-bg: #121212;
-$color-surface: #1C1F26;
-$color-surface-variant: #2A2D34;
+$color-surface: #1c1f26;
+$color-surface-variant: #2a2d34;
 
 // Text Colors
 $color-text: $color-white;
@@ -21,10 +21,10 @@ $color-text-medium: rgba($color-white, 0.6);
 $color-text-disabled: rgba($color-white, 0.38);
 
 // State Colors
-$color-error: #EF5350;
-$color-info: #29B6F6;
-$color-success: #66BB6A;
-$color-warning: #FFA726;
+$color-error: #ef5350;
+$color-info: #29b6f6;
+$color-success: #66bb6a;
+$color-warning: #ffa726;
 
 // CSS Custom Properties (for dynamic usage in components)
 :root {
@@ -50,7 +50,6 @@ $color-warning: #FFA726;
   --color-white: #{$color-white};
   --color-grey: #{$color-grey};
 }
-
 
 // Utility
 .success {

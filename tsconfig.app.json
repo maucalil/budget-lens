@@ -7,7 +7,7 @@
     "baseUrl": "./",
     "paths": {
       "@shared/*": ["src/app/shared/*"],
-      "@core/*": ["src/app/core/*"],
+      "@core/*": ["src/app/core/*"]
     },
     "types": []
   },
