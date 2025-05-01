@@ -1,33 +1,56 @@
 // SCSS variables (for static usage in Sass functions/mixins)
-$color-primary: #0f5959;
-$color-secondary: #1d7373;
-$color-bg-primary: #042326;
-$color-bg-secondary: #0a3a40;
-$color-text-primary: #cacaca;
-$color-text-secondary: #878787;
-$color-success: #28a745;
-$color-error: #dc3545;
-$color-warning: #ffc107;
-$color-info: #17a2b8;
-$color-black: #000000;
-$color-white: #ffffff;
-$color-grey: #6C6C6C;
+// Base color for alpha manipulations
+$color-white: #f5f5f5;
+$color-grey: rgba($color-white, 0.12);
 
-// CSS custom properties (for dynamic usage in components)
+// Brand Colors
+$color-primary: #1d7373;
+$color-primary-variant: #0f5959;
+$color-secondary: #1E88E5;
+$color-secondary-variant: #1565C0;
+
+// Background and surface
+$color-bg: #121212;
+$color-surface: #1C1F26;
+$color-surface-variant: #2A2D34;
+
+// Text Colors
+$color-text: $color-white;
+$color-text-bg: rgba($color-white, 0.87);
+$color-text-medium: rgba($color-white, 0.6);
+$color-text-disabled: rgba($color-white, 0.38);
+
+// State Colors
+$color-error: #EF5350;
+$color-info: #29B6F6;
+$color-success: #66BB6A;
+$color-warning: #FFA726;
+
+// CSS Custom Properties (for dynamic usage in components)
 :root {
   --color-primary: #{$color-primary};
+  --color-primary-variant: #{$color-primary-variant};
   --color-secondary: #{$color-secondary};
-  --color-text-primary: #{$color-text-primary};
-  --color-text-secondary: #{$color-text-secondary};
-  --color-bg-primary: #{$color-bg-primary};
-  --color-bg-secondary: #{$color-bg-secondary};
+  --color-secondary-variant: #{$color-secondary-variant};
+
+  --color-bg: #{$color-bg};
+  --color-surface: #{$color-surface};
+  --color-surface-variant: #{$color-surface-variant};
+
+  --color-text: #{$color-text};
+  --color-text-bg: #{rgba($color-white, 0.87)};
+  --color-text-medium: #{rgba($color-white, 0.6)};
+  --color-text-disabled: #{rgba($color-white, 0.38)};
+
   --color-success: #{$color-success};
   --color-error: #{$color-error};
   --color-warning: #{$color-warning};
   --color-info: #{$color-info};
-  --color-black: #{$color-black};
+
   --color-white: #{$color-white};
+  --color-grey: #{$color-grey};
 }
+
 
 // Utility
 .success {

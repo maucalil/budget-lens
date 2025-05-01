@@ -13,7 +13,7 @@
 // Body
 body {
   overflow-x: hidden;
-  background-color: var(--color-bg-primary);
+  background-color: var(--color-bg);
 }
 
 // Headings
@@ -26,7 +26,7 @@ h6 {
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 0.5rem;
-  color: var(--color-text-primary);
+  color: var(--color-text);
 }
 
 h1 {
@@ -55,12 +55,11 @@ p {
 
 // Links
 a {
-  color: var(--color-text-primary);
+  color: var(--color-text);
   text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
-    color: var(--color-text-secondary);
+    color: var(--color-medium);
   }
 }
 

@@ -12,28 +12,28 @@ button {
   transition: all 0.2s ease;
 
   &.btn-primary {
-    color: $color-text-primary;
+    color: $color-text;
     background-color: $color-primary;
 
     &:hover:not([disabled]) {
-      background-color: color.adjust($color-primary, $lightness: -5%);
+      background-color: $color-primary-variant;
     }
 
     &:active:not([disabled]) {
-      background-color: color.adjust($color-primary, $lightness: -8%);
+      background-color: color.adjust($color-primary-variant, $lightness: -5%);
     }
   }
 
   &.btn-secondary {
-    color: $color-secondary;
-    background-color: $color-text-primary;
+    color: $color-text;
+    background-color: $color-secondary;
 
     &:hover:not([disabled]) {
-      background-color: color.adjust($color-text-primary, $lightness: -10%);
+      background-color: $color-secondary-variant;
     }
 
     &:active:not([disabled]) {
-      background-color: color.adjust($color-text-primary, $lightness: -20%);
+      background-color: color.adjust($color-secondary-variant, $lightness: -5%);
     }
   }
 
@@ -41,7 +41,7 @@ button {
     cursor: not-allowed;
     box-shadow: none;
     background-color: $color-grey;
-    color: $color-white;
+    color: $color-text-disabled;
     font-weight: 400;
   }
 }

@@ -1,5 +1,5 @@
 nav {
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-surface);
 }
 
 ul {
@@ -8,11 +8,11 @@ ul {
 
 a {
   border-radius: 0.5rem;
-  transition: color 0.3 ease;
+  transition: color 0.3s ease;
 
   &:hover,
   &.active {
     background-color: var(--color-secondary);
-    color: var(--color-text-primary);
+    color: var(--color-text);
   }
 }
