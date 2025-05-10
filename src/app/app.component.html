@@ -1,20 +1,6 @@
 <div class="flex min-h-screen w-full">
   <app-sidebar />
-
   <div class="flex-1 p-4">
-    <!-- TODO remove this div later, just for testing -->
-    <div class="flex justify-around items-center p-4">
-      <app-shared-button>Primary</app-shared-button>
-      <app-shared-button [type]="'secondary'">Secondary</app-shared-button>
-      <app-shared-button [disabled]="true">Disabled</app-shared-button>
-    </div>
-
-    <!-- TODO remove this card later, just for testing -->
-    <app-shared-card>
-      <h1>title</h1>
-      <p>some text</p>
-    </app-shared-card>
-
     <router-outlet />
   </div>
 </div>

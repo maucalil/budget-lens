@@ -1,11 +1,8 @@
-$size-scale: (
-  0: 0rem,
-  4: 1rem,
-  8: 2rem,
-  16: 4rem,
-  48: 12rem,
+@use 'breakpoints' as *;
+
+$width-scale: (
   full: 100%,
-  screen: 100vh,
+  screen: 100vw,
   '1\\/4': 25%,
   '1\\/2': 50%,
   '3\\/4': 75%,
@@ -13,8 +10,13 @@ $size-scale: (
   '2\\/3': 66.6667%,
 );
 
+$height-scale: (
+  full: 100%,
+  screen: 100vh,
+);
+
 // Width utilities
-@each $key, $value in $size-scale {
+@each $key, $value in $width-scale {
   .w-#{$key} {
     width: $value;
   }
@@ -29,7 +31,7 @@ $size-scale: (
 }
 
 // Height utilities
-@each $key, $value in $size-scale {
+@each $key, $value in $height-scale {
   .h-#{$key} {
     height: $value;
   }
@@ -40,5 +42,37 @@ $size-scale: (
 
   .max-h-#{$key} {
     max-height: $value;
+  }
+}
+
+@each $name, $size in $breakpoints {
+  @include respond-min($name) {
+    @each $key, $value in $width-scale {
+      .w-#{$key}-#{$name} {
+        width: $value;
+      }
+
+      .min-w-#{$key}-#{$name} {
+        min-width: $value;
+      }
+
+      .max-w-#{$key}-#{$name} {
+        max-width: $value;
+      }
+    }
+
+    @each $key, $value in $height-scale {
+      .h-#{$key}-#{$name} {
+        height: $value;
+      }
+
+      .min-h-#{$key}-#{$name} {
+        min-height: $value;
+      }
+
+      .max-h-#{$key}-#{$name} {
+        max-height: $value;
+      }
+    }
   }
 }
