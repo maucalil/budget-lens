@@ -28,7 +28,7 @@
 .flex-row {
   flex-direction: row;
 }
-.flex-column {
+.flex-col {
   flex-direction: column;
 }
 
@@ -154,7 +154,7 @@
     .flex-row-#{$name} {
       flex-direction: row;
     }
-    .flex-column-#{$name} {
+    .flex-col-#{$name} {
       flex-direction: column;
     }
 

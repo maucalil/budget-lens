@@ -1,19 +1,20 @@
+import { faCreditCard, faLandmark, faMoneyCheckAlt, faWallet } from '@fortawesome/free-solid-svg-icons';
 import { SidebarItem } from './sidebar-item.interface';
 
 export const sidebarItems: SidebarItem[] = [
   {
     link: '',
-    icon: 'fa-house-user', // chart-line
+    icon: faLandmark, // chart-line
     label: 'Dashboard',
   },
   {
     link: '/contas',
-    icon: 'fa-credit-card',
-    label: 'Contas',
+    icon: faWallet,
+    label: 'Carteira',
   },
   {
     link: '/transacoes',
-    icon: 'fa-money-bill-wave', // money-check-dollar
+    icon: faMoneyCheckAlt, // money-check-dollar
     label: 'Transacoes',
   },
 ];

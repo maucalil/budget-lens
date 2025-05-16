@@ -1,5 +1,9 @@
 nav {
   background-color: var(--color-surface);
+
+  > div:first-of-type {
+    border-bottom: 1px solid var(--color-text-medium);
+  }
 }
 
 ul {
