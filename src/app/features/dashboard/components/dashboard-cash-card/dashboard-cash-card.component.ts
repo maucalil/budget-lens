@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { CardComponent } from '@shared/components';
-import { DashboardCashCardData } from 'src/app/models/dashboard-cash-card-data.interface';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DashboardCashCardData } from '@models/dashboard-cash-card-data.interface';
 
 @Component({
   selector: 'app-dashboard-cash-card',
