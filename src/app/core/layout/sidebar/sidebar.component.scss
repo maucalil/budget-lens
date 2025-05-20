@@ -5,7 +5,7 @@
   background-color: var(--color-surface);
   opacity: 50%;
   border-radius: 3rem;
-  z-index: 999;
+  z-index: 1000;
   top: 1%;
   right: 2%;
 
@@ -16,6 +16,7 @@
 
 nav {
   position: fixed;
+  z-index: 999;
   background-color: var(--color-surface);
   transition: transform 0.4s ease-in-out;
   transform: translateX(-100%);
