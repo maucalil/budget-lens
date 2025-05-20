@@ -1,8 +1,9 @@
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { Currency } from './enum/currency.enum';
 
 export interface DashboardCashCardData {
-  value: number;
-  currency: 'BRL' | 'USD' | 'EUR' | 'GBP';
+  amount: number;
+  currency: Currency;
   name: string;
   icon: IconDefinition;
 }

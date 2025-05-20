@@ -1,0 +1,48 @@
+h2 {
+  color: var(--color-text-medium);
+}
+
+table {
+  border-collapse: collapse;
+  table-layout: auto;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 2px solid var(--color-surface-variant);
+  white-space: nowrap;
+  text-align: center;
+}
+
+th {
+  font-weight: bold;
+  color: var(--color-text-medium);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+tr:not(:first-child) td {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid var(--color-surface-variant);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover {
+  background-color: var(--color-surface-variant);
+}
+
+.iconIncome {
+  color: var(--color-success);
+}
+
+.iconExpense {
+  color: var(--color-error);
+}
