@@ -16,6 +16,9 @@ $width-scale: (
 );
 
 $height-scale: (
+  0: 0,
+  1: 0.25rem,
+  76: 19rem,
   full: 100%,
   screen: 100vh,
 );
