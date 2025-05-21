@@ -7,10 +7,11 @@ import {
   faArrowTrendDown,
   faArrowTrendUp,
 } from '@fortawesome/free-solid-svg-icons';
+import { CardComponent } from '@shared/components';
 
 @Component({
   selector: 'app-dashboard-transaction-table',
-  imports: [CommonModule, BadgeComponent, FontAwesomeModule],
+  imports: [CommonModule, BadgeComponent, CardComponent, FontAwesomeModule],
   templateUrl: './dashboard-transaction-table.component.html',
   styleUrl: './dashboard-transaction-table.component.scss',
 })
