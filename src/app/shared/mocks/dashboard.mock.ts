@@ -10,6 +10,7 @@ import {
   DashboardTableRowData,
   PaymentMethod,
 } from '@models/index';
+import { ChartConfiguration, ChartType } from 'chart.js';
 
 export const MOCK_CASH_CARD_DATA: DashboardCashCardData[] = [
   {
@@ -90,3 +91,79 @@ export const MOCK_DASHBOARD_TRANSACTIONS: DashboardTableRowData[] = [
     currency: Currency.BRL,
   },
 ];
+
+export const DASHBOARD_INCOME_EXPENSES_CHART_TYPE: ChartType = 'line';
+
+export const DASHBOARD_INCOME_EXPENSES_CHART_DATA: ChartConfiguration['data'] =
+  {
+    labels: [
+      'Jan',
+      'Fev',
+      'Mar',
+      'Abr',
+      'Mai',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Set',
+      'Out',
+      'Nov',
+      'Dez',
+    ],
+    datasets: [
+      {
+        data: [400, 300, 600, 630, 580, 650, 900, 1050, 700, 1200, 830, 780],
+        label: 'Income',
+        borderColor: '#66bb6a',
+        backgroundColor: '#66bb6a',
+      },
+      {
+        data: [800, 1250, 1000, 600, 850, 500, 480, 300, 420, 500, 1500, 1000],
+        label: 'Expenses',
+        borderColor: '#ef5350',
+        backgroundColor: '#ef5350',
+      },
+    ],
+  };
+
+export const DASHBOARD_INCOME_EXPENSES_CHART_OPTIONS: ChartConfiguration['options'] =
+  {
+    maintainAspectRatio: false,
+    elements: {
+      point: {
+        radius: 4,
+        hoverRadius: 5,
+      },
+    },
+    plugins: {
+      legend: {
+        position: 'top',
+        align: 'start',
+        labels: {
+          usePointStyle: true,
+          padding: 15,
+        },
+      },
+      tooltip: {
+        callbacks: {
+          label: context => {
+            const label = context.dataset.label || '';
+            const value = context.parsed.y;
+            return `${label}: R$ ${value}`;
+          },
+        },
+      },
+    },
+    scales: {
+      x: {
+        border: { display: false },
+        grid: { display: false },
+      },
+      y: {
+        grace: '5%',
+        border: { display: false },
+        grid: { display: false },
+        ticks: { display: false },
+      },
+    },
+  };
