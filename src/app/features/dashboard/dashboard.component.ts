@@ -8,11 +8,13 @@ import {
   MOCK_DASHBOARD_TRANSACTIONS,
 } from '@shared/mocks/dashboard.mock';
 import { DashboardIncomeExpenseChartComponent } from './components/dashboard-income-expense-chart/dashboard-income-expense-chart.component';
+import { DashboardCategoriesChartComponent } from './components/dashboard-categories-chart/dashboard-categories-chart.component';
 
 @Component({
   selector: 'app-dashboard',
   imports: [
     DashboardCashCardComponent,
+    DashboardCategoriesChartComponent,
     DashboardIncomeExpenseChartComponent,
     DashboardTransactionTableComponent,
   ],
