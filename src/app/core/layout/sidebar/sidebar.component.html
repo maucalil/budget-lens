@@ -1,0 +1,41 @@
+<button class="toggle-btn hidden-sm p-3" (click)="toggleMobileVisibility()">
+  <fa-icon [icon]="isMobileVisible() ? faXmark : faBars" size="lg" />
+</button>
+
+<nav
+  class="flex flex-col items-center w-screen w-full-sm h-full p-3"
+  [class.visible-mobile]="isMobileVisible()"
+  [class.expanded]="isExpanded()">
+  <header class="w-full pb-3">
+    <div class="w-full flex items-center justify-center gap-3">
+      <img class="w-4" src="logo.png" alt="BL" />
+      @if (isExpanded()) {
+        <span class="font-bold text-2xl">Budget Lens</span>
+      }
+    </div>
+
+    <button
+      (click)="toggleExpansion()"
+      class="expansion-btn hidden flex-sm justify-center items-center font-md">
+      <fa-icon [icon]="isExpanded() ? faAngleLeft : faAngleRight" size="xl" />
+    </button>
+  </header>
+
+  <ul class="w-full mt-4">
+    @for (item of sidebarItems; track $index) {
+      <li class="w-full mb-4 last:mb-0">
+        <a
+          class="flex items-center gap-3 p-3"
+          [class.justify-center]="!isExpanded()"
+          [routerLink]="item.link"
+          [routerLinkActive]="'active'"
+          [routerLinkActiveOptions]="{ exact: true }">
+          <fa-icon [icon]="item.icon" size="lg"></fa-icon>
+          @if (isExpanded()) {
+            <span class="font-bold">{{ item.label }}</span>
+          }
+        </a>
+      </li>
+    }
+  </ul>
+</nav>

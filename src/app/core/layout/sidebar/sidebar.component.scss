@@ -1,0 +1,80 @@
+@use '../../../../styles/utils/breakpoints' as bp;
+
+.toggle-btn {
+  position: absolute;
+  background-color: var(--color-surface);
+  opacity: 50%;
+  border-radius: 3rem;
+  z-index: 1000;
+  top: 1%;
+  right: 2%;
+
+  &:hover {
+    opacity: 100%;
+  }
+}
+
+nav {
+  position: fixed;
+  z-index: 999;
+  background-color: var(--color-surface);
+  transition: transform 0.4s ease-in-out;
+  transform: translateX(-100%);
+
+  &.visible-mobile {
+    transform: translateX(0);
+  }
+
+  @include bp.respond-min(sm) {
+    position: relative;
+    transform: translateX(0);
+    width: 6rem;
+    transition: width 0.3s ease;
+
+    &.expanded {
+      width: 16rem;
+    }
+
+    span {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      white-space: nowrap;
+    }
+
+    &.expanded span {
+      opacity: 1;
+    }
+  }
+
+  header {
+    position: relative;
+    border-bottom: 1px solid var(--color-text-medium);
+
+    .expansion-btn {
+      position: absolute;
+      background-color: var(--color-surface);
+      border-radius: 50%;
+      top: 37%;
+      right: -32px;
+      height: 32px;
+      width: 32px;
+      transform: translateY(-50%);
+      z-index: 999;
+    }
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  border-radius: 0.5rem;
+  transition: color 0.3s ease;
+
+  &:hover,
+  &.active {
+    background-color: var(--color-primary);
+    color: var(--color-text);
+  }
+}

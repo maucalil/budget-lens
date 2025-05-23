@@ -4,7 +4,6 @@
 .flex {
   display: flex;
 }
-
 .inline-flex {
   display: inline-flex;
 }
@@ -29,8 +28,45 @@
 .flex-row {
   flex-direction: row;
 }
-.flex-column {
+.flex-col {
   flex-direction: column;
+}
+
+// Flex wrap
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+.flex-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+// Grid flow
+.grid-flow-row {
+  grid-auto-flow: row;
+}
+.grid-flow-col {
+  grid-auto-flow: column;
+}
+.grid-flow-row-dense {
+  grid-auto-flow: row dense;
+}
+.grid-flow-col-dense {
+  grid-auto-flow: column dense;
+}
+
+// Grid template columns and rows
+@for $i from 1 through 6 {
+  .grid-cols-#{$i} {
+    grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+  }
+}
+@for $i from 1 through 6 {
+  .grid-rows-#{$i} {
+    grid-template-rows: repeat(#{$i}, minmax(0, 1fr));
+  }
 }
 
 // Justify content
@@ -78,6 +114,23 @@
   gap: 2rem;
 }
 
+// Flex-grow, shrink, basis utilities
+@for $i from 1 through 5 {
+  .flex-#{$i} {
+    flex: #{$i};
+  }
+}
+
+.flex-auto {
+  flex: 1 1 auto;
+}
+.flex-initial {
+  flex: 0 1 auto;
+}
+.flex-none {
+  flex: none;
+}
+
 // Responsive variants
 @each $name, $size in $breakpoints {
   @include respond-min($name) {
@@ -90,6 +143,7 @@
     .grid-#{$name} {
       display: grid;
     }
+
     .block-#{$name} {
       display: block;
     }
@@ -100,8 +154,18 @@
     .flex-row-#{$name} {
       flex-direction: row;
     }
-    .flex-column-#{$name} {
+    .flex-col-#{$name} {
       flex-direction: column;
+    }
+
+    .flex-wrap-#{$name} {
+      flex-wrap: wrap;
+    }
+    .flex-nowrap-#{$name} {
+      flex-wrap: nowrap;
+    }
+    .flex-wrap-reverse-#{$name} {
+      flex-wrap: wrap-reverse;
     }
 
     .justify-start-#{$name} {
@@ -133,6 +197,29 @@
       align-items: stretch;
     }
 
+    .grid-flow-row-#{$name} {
+      grid-auto-flow: row;
+    }
+    .grid-flow-col-#{$name} {
+      grid-auto-flow: column;
+    }
+    .grid-flow-row-dense-#{$name} {
+      grid-auto-flow: row dense;
+    }
+    .grid-flow-col-dense-#{$name} {
+      grid-auto-flow: column dense;
+    }
+    @for $i from 1 through 6 {
+      .grid-cols-#{$i}-#{$name} {
+        grid-template-columns: repeat(#{$i}, minmax(0, 1fr));
+      }
+    }
+    @for $i from 1 through 6 {
+      .grid-rows-#{$i}-#{$name} {
+        grid-template-rows: repeat(#{$i}, minmax(0, 1fr));
+      }
+    }
+
     .gap-1-#{$name} {
       gap: 0.25rem;
     }
@@ -144,6 +231,25 @@
     }
     .gap-4-#{$name} {
       gap: 2rem;
+    }
+
+    // Flex-grow/shrink/basis responsive variants
+    @for $i from 1 through 12 {
+      .flex-#{$i}-#{$name} {
+        flex: #{$i};
+      }
+    }
+
+    .flex-auto-#{$name} {
+      flex: 1 1 auto;
+    }
+
+    .flex-initial-#{$name} {
+      flex: 0 1 auto;
+    }
+
+    .flex-none-#{$name} {
+      flex: none;
     }
   }
 }

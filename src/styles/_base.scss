@@ -1,5 +1,6 @@
 // Import tokens if needed
 @use 'sass:map';
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
 *,
 *::before,
@@ -8,12 +9,14 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  font-family: 'Lato', sans-serif;
 }
 
 // Body
 body {
   overflow-x: hidden;
-  background-color: var(--color-bg-primary);
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 // Headings
@@ -25,8 +28,7 @@ h5,
 h6 {
   font-weight: 600;
   line-height: 1.2;
-  margin-bottom: 0.5rem;
-  color: var(--color-text-primary);
+  color: var(--color-text);
 }
 
 h1 {
@@ -48,31 +50,14 @@ h6 {
   font-size: 0.875rem;
 }
 
-// Paragraphs
-p {
-  margin-bottom: 1rem;
-}
-
 // Links
 a {
-  color: var(--color-text-primary);
+  color: var(--color-text);
   text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
-    color: var(--color-text-secondary);
+    color: var(--color-medium);
   }
-}
-
-// Lists
-ul,
-ol {
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-li {
-  margin-bottom: 0.25rem;
 }
 
 // Buttons
@@ -81,4 +66,5 @@ button {
   cursor: pointer;
   border: none;
   background: none;
+  color: var(--color-text);
 }
