@@ -3,13 +3,16 @@ select {
   color: var(--color-text);
   border: 2px solid var(--color-grey);
   border-radius: 10px;
-}
 
-select:hover,
-select:focus,
-select:active {
-  outline: none;
-  box-shadow: none;
+  &:hover, &:focus, &:active {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--color-surface);
+  }
 }
 
 option {
