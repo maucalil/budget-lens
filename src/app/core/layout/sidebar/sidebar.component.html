@@ -8,10 +8,9 @@
   [class.expanded]="isExpanded()">
   <header class="w-full pb-3">
     <div class="w-full flex items-center justify-center gap-3">
-      <img class="w-4" src="logo.png" alt="BL" />
-      @if (isExpanded()) {
-        <span class="font-bold text-2xl">Budget Lens</span>
-      }
+      <span class="title font-bold text-2xl">{{
+        isExpanded() ? 'BudgetLens' : 'BL'
+      }}</span>
     </div>
 
     <button
@@ -25,7 +24,7 @@
     @for (item of sidebarItems; track $index) {
       <li class="w-full mb-4 last:mb-0">
         <a
-          class="flex items-center gap-3 p-3"
+          class="flex items-center gap-3 px-3 py-2"
           [class.justify-center]="!isExpanded()"
           [routerLink]="item.link"
           [routerLinkActive]="'active'"

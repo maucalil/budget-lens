@@ -25,6 +25,10 @@ nav {
     transform: translateX(0);
   }
 
+  .title {
+    font-family: 'Abril Fatface', serif;
+  }
+
   @include bp.respond-min(sm) {
     position: relative;
     transform: translateX(0);
@@ -33,16 +37,6 @@ nav {
 
     &.expanded {
       width: 16rem;
-    }
-
-    span {
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      white-space: nowrap;
-    }
-
-    &.expanded span {
-      opacity: 1;
     }
   }
 
