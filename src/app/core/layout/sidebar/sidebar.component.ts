@@ -10,7 +10,7 @@ import {
   faBars,
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
-import { BREAKPOINTS } from '@shared/constants/breakpoints';
+import { BREAKPOINTS } from '@shared/constants';
 
 @Component({
   selector: 'app-sidebar',

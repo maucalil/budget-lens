@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { CardComponent } from '@shared/components';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { DashboardCashCardData } from '@models/dashboard-cash-card-data.interface';
+import { DashboardCashCardData } from '@features/dashboard/models/dashboard-cash-card-data.interface';
 
 @Component({
   selector: 'app-dashboard-cash-card',

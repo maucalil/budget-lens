@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { DashboardCashCardComponent } from './components/dashboard-cash-card/dashboard-cash-card.component';
 import { DashboardTransactionTableComponent } from './components/dashboard-transaction-table/dashboard-transaction-table.component';
-import { DashboardCashCardData } from '@models/dashboard-cash-card-data.interface';
-import { DashboardTableRowData } from '@models/dashboard-table-row-data.interface';
 import {
   MOCK_CASH_CARD_DATA,
   MOCK_DASHBOARD_TRANSACTIONS,
@@ -11,6 +9,8 @@ import { DashboardIncomeExpenseChartComponent } from './components/dashboard-inc
 import { DashboardCategoriesChartComponent } from './components/dashboard-categories-chart/dashboard-categories-chart.component';
 import { SelectorComponent } from '@shared/components/selector/selector.component';
 import { FilterYearMonthService } from '@core/services';
+import { DashboardCashCardData } from './models/dashboard-cash-card-data.interface';
+import { DashboardTableRowData } from './models/dashboard-table-row-data.interface';
 
 @Component({
   selector: 'app-dashboard',

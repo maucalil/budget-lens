@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MONTHS } from '@shared/constants/months';
+import { MONTHS } from '@shared/constants';
 
 @Injectable({
   providedIn: 'root',

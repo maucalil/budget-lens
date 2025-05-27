@@ -1,7 +1,5 @@
-import { Account } from './account.interface';
-import { Category } from './category.interface';
-import { Currency } from './enum/currency.enum';
-import { PaymentMethod } from './enum/payment-method.enum';
+import { Account, Category } from '@core/models';
+import { Currency, PaymentMethod } from '@shared/enums';
 
 export interface DashboardTableRowData {
   isIncome: boolean;

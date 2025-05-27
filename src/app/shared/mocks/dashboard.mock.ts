@@ -1,15 +1,12 @@
+import { DashboardCashCardData } from '@features/dashboard/models/dashboard-cash-card-data.interface';
+import { DashboardTableRowData } from '@features/dashboard/models/dashboard-table-row-data.interface';
 import {
   faBalanceScale,
   faMoneyBillTrendUp,
   faDownLong,
   faMoneyBillWave,
 } from '@fortawesome/free-solid-svg-icons';
-import {
-  Currency,
-  DashboardCashCardData,
-  DashboardTableRowData,
-  PaymentMethod,
-} from '@models/index';
+import { Currency, PaymentMethod } from '@shared/enums';
 import { ChartConfiguration } from 'chart.js';
 
 export const MOCK_CASH_CARD_DATA: DashboardCashCardData[] = [
