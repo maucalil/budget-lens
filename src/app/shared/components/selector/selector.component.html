@@ -1,0 +1,10 @@
+<select
+  class="px-2 py-1 text-sm"
+  (change)="onSelectionChange($event)"
+  [disabled]="disabled">
+  @for (option of options; track options) {
+    <option [value]="option" [selected]="option === selectedOption">
+      {{ option }}
+    </option>
+  }
+</select>
