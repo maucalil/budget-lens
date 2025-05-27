@@ -1,1 +1,9 @@
-<p>transactions works!</p>
+<div>
+  <p class="text-xl mb-1">Hi, you!</p>
+  <h1 class="text-4xl mb-3">Transações</h1>
+</div>
+
+<app-transactions-header
+  (addClicked)="openAddPanel()"
+  (filterClicked)="openFilterPanel()">
+</app-transactions-header>
