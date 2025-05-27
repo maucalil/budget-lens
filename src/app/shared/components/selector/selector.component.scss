@@ -1,0 +1,21 @@
+select {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: 2px solid var(--color-grey);
+  border-radius: 10px;
+
+  &:hover, &:focus, &:active {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--color-surface);
+  }
+}
+
+option {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
