@@ -1,0 +1,29 @@
+<div
+  class="transaction-item grid p-3 gap-3"
+  tabindex="0"
+  role="button"
+  (click)="onSelection()"
+  (keydown.enter)="onSelection()">
+  <span class="name flex items-center gap-3">
+    <fa-icon
+      [icon]="transaction.isIncome ? faArrowTrendUp : faArrowTrendDown"
+      [ngClass]="transaction.isIncome ? 'income' : 'expense'" />
+    {{ transaction.name }}
+  </span>
+
+  <app-shared-badge
+    class="category w-full w-auto-lg"
+    [text]="transaction.category.name"
+    [color]="transaction.category.color"
+    [widthClass]="'w-full'" />
+
+  <app-shared-badge
+    class="account w-full w-auto-lg"
+    [text]="`${transaction.account.name} - ${transaction.paymentMethod}`"
+    [color]="transaction.account.color"
+    [widthClass]="'w-full'" />
+
+  <span class="amount" [ngClass]="transaction.isIncome ? 'income' : 'expense'">
+    {{ transaction.amount | currency: transaction.currency }}
+  </span>
+</div>
