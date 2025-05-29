@@ -1,0 +1,13 @@
+.transaction-list {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .date-header-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+}
