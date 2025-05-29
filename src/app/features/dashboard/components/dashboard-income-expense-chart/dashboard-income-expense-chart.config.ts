@@ -27,9 +27,8 @@ export const DASHBOARD_INCOME_EXPENSE_CHART_OPTIONS: ChartConfiguration['options
           boxWidth: 12,
           boxHeight: 12,
           font: {
-            family: 'Lato',
-            size: 16,
-            weight: 500,
+            family: 'Poppins',
+            size: 15,
           },
           color: '#f5f5f5',
         },
