@@ -1,0 +1,5 @@
+@use 'utils/colors' as *;
+
+.transaction-date-header {
+  background-color: $color-surface-variant;
+}

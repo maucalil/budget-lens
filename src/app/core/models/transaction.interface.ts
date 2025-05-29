@@ -3,6 +3,7 @@ import { Account } from './account.interface';
 import { Category } from './category.interface';
 
 export interface Transaction {
+  id: number;
   account: Account;
   amount: number;
   category: Category;
