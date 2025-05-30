@@ -1,3 +1,9 @@
-<div class="badge inline-block px-3 py-1" [style.background-color]="color">
+<div
+  class="badge inline-block px-3"
+  [style.background-color]="color"
+  (click)="onClick()"
+  role="button"
+  (keydown.enter)="onClick()"
+  tabindex="0">
   <p>{{ text }}</p>
 </div>

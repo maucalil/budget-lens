@@ -12,9 +12,7 @@ export const routes: Routes = [
   {
     path: 'contas',
     loadComponent: () =>
-      import('./features/accounts/accounts.component').then(
-        m => m.AccountsComponent
-      ),
+      import('./features/wallet/wallet.component').then(m => m.WalletComponent),
   },
   {
     path: 'transacoes',
