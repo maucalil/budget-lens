@@ -1,0 +1,12 @@
+<div
+  class="transactions-header flex flex-wrap flex-col flex-row-sm items-center-sm justify-between-sm gap-3 p-3">
+  <h3>Suas transações</h3>
+  <div class="flex flex-wrap gap-3">
+    <app-shared-button (clicked)="onAddClick()">
+      <fa-icon [icon]="faPlus" class="mr-2" />Adicionar
+    </app-shared-button>
+    <app-shared-button (clicked)="onFilterClick()">
+      <fa-icon [icon]="faFilter" size="sm" class="mr-2" />Filtros
+    </app-shared-button>
+  </div>
+</div>

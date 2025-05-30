@@ -1,0 +1,48 @@
+@use 'sass:color';
+@use 'utils/colors' as *;
+
+input {
+  outline: none;
+  background-color: transparent;
+  color: $color-text;
+  transition: border-color 0.2s;
+
+  &:focus:not(.disabled) {
+    border-color: $color-text;
+  }
+
+  &.box {
+    border: 1px solid $color-text-medium;
+    border-radius: 0.25rem;
+  }
+
+  &.underline {
+    border: none;
+    border-bottom: 2px solid $color-text-medium;
+  }
+
+  &.disabled {
+    background-color: $color-grey;
+    border-color: transparent;
+    border-radius: 0.25rem;
+    color: $color-text-disabled;
+    cursor: not-allowed;
+  }
+
+  &.invalid {
+    border-color: $color-error;
+  }
+
+  &.readonly {
+    border: none;
+    cursor: default;
+
+    &::placeholder {
+      color: transparent;
+    }
+  }
+}
+
+.input-error {
+  color: $color-error;
+}

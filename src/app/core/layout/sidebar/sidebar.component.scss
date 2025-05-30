@@ -1,4 +1,4 @@
-@use '../../../../styles/utils/breakpoints' as bp;
+@use 'utils/breakpoints' as bp;
 
 .toggle-btn {
   position: absolute;
@@ -26,7 +26,7 @@ nav {
   }
 
   .title {
-    font-family: 'Abril Fatface', serif;
+    font-family: 'Abril Fatface', sans-serif;
   }
 
   @include bp.respond-min(sm) {

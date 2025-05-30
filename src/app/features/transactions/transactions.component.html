@@ -1,1 +1,27 @@
-<p>transactions works!</p>
+<div class="flex flex-col h-full">
+  <div>
+    <p class="text-xl mb-1">Hi, you!</p>
+    <h1 class="text-4xl mb-3">Transações</h1>
+  </div>
+
+  <app-transactions-header
+    (addClicked)="openAddPanel()"
+    (filterClicked)="openFilterPanel()">
+  </app-transactions-header>
+
+  <section class="transaction-list overflow-y-auto">
+    @for (group of groupedTransactions; track group.date) {
+      <div class="date-header-wrapper">
+        <app-transaction-date-header
+          [date]="group.date"
+          [totalAmount]="group.totalAmount"></app-transaction-date-header>
+      </div>
+
+      @for (transaction of group.transactions; track transaction.id) {
+        <app-transaction-item
+          [transaction]="transaction"
+          (selected)="onTransactionSelected($event)"></app-transaction-item>
+      }
+    }
+  </section>
+</div>

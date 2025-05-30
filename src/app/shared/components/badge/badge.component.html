@@ -1,9 +1,10 @@
-<div
+<span
   class="badge inline-block px-3"
+  [ngClass]="widthClass"
   [style.background-color]="color"
-  (click)="onClick()"
+    (click)="onClick()"
   role="button"
   (keydown.enter)="onClick()"
-  tabindex="0">
-  <p>{{ text }}</p>
-</div>
+  tabindex="0" >
+  {{ text }}
+</span>
