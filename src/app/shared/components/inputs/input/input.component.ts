@@ -24,7 +24,7 @@ export class InputComponent implements OnInit {
   @Input() label = '';
   @Input() styleType: InputStyle = 'box';
   @Input() type: AllowedInputTypes = 'text';
-  @Input({ required: true }) formControl!: FormControl;
+  @Input({ required: true }) control!: FormControl;
   @Input({ required: true })
   set formActive(value: boolean) {
     this._formActive = value;
@@ -42,13 +42,13 @@ export class InputComponent implements OnInit {
   ngOnInit() {
     this.updateState();
 
-    this.formControl.statusChanges.subscribe(() => this.updateState());
+    this.control.statusChanges.subscribe(() => this.updateState());
   }
 
   updateState() {
-    if (this.formControl.disabled) {
+    if (this.control.disabled) {
       this._state = 'disabled';
-    } else if (this.formControl.invalid && this.formControl.touched) {
+    } else if (this.control.invalid && this.control.touched) {
       this._state = 'invalid';
     } else if (!this.formActive) {
       this._state = 'readonly';
@@ -74,7 +74,7 @@ export class InputComponent implements OnInit {
   }
 
   get errorMessage(): string | null {
-    const errors = this.formControl.errors;
+    const errors = this.control.errors;
     if (!errors) return null;
 
     if (errors['required']) return 'Este campo é obrigatório.';
