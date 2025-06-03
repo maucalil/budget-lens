@@ -6,5 +6,8 @@
   [disabled]="disabled"
   (click)="handleClick()"
   class="inline-flex justify-center items-center px-3 py-2">
-  <ng-content></ng-content>
+  @if (icon) {
+    <fa-icon [icon]="icon" size="sm" class="mr-2" />
+  }
+  <ng-content />
 </button>
