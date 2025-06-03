@@ -34,8 +34,11 @@ input {
   }
 
   &.readonly {
-    border: none;
     cursor: default;
+
+    &.underline {
+      border: none;
+    }
 
     &::placeholder {
       color: transparent;
@@ -45,4 +48,23 @@ input {
 
 .input-error {
   color: $color-error;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+  opacity: 1;
+}
+
+input[type='number'],
+input[type='date'] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
