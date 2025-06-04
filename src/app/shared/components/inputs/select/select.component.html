@@ -6,6 +6,7 @@
   <select
     class="form-control text-md px-3 py-2"
     [class]="classes"
+    [class.placeholder-selected]="control.value === null"
     [id]="fieldId"
     [formControl]="control"
     [compareWith]="compareObjects">
