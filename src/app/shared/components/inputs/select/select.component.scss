@@ -1,0 +1,15 @@
+@use 'utils/colors' as *;
+
+select {
+  cursor: pointer;
+
+  &.readonly {
+    pointer-events: none;
+    touch-action: none;
+  }
+
+  option {
+    background-color: $color-surface;
+    color: $color-text;
+  }
+}

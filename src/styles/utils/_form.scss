@@ -1,0 +1,52 @@
+@use 'utils/colors' as *;
+
+.form-control {
+  outline: none;
+  background-color: transparent;
+  color: $color-text;
+  transition: border-color 0.2s;
+  border: 1px solid $color-text-medium;
+  border-radius: 0.25rem;
+
+  &:focus:not(.disabled):not(.invalid) {
+    border-color: $color-text;
+  }
+
+  &.box {
+    border: 1px solid $color-text-medium;
+    border-radius: 0.25rem;
+  }
+
+  &.underline {
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid $color-text-medium;
+  }
+
+  &.disabled {
+    background-color: $color-grey;
+    border-color: transparent;
+    color: $color-text-disabled;
+    cursor: not-allowed;
+  }
+
+  &.invalid {
+    border-color: $color-error;
+  }
+
+  &.readonly {
+    cursor: default;
+
+    &.underline {
+      border: none;
+    }
+
+    &::placeholder {
+      color: transparent;
+    }
+  }
+}
+
+.has-error {
+  color: $color-error;
+}
