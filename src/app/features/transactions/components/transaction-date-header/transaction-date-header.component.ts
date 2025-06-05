@@ -1,9 +1,9 @@
-import { CurrencyPipe, DatePipe } from '@angular/common';
+import { CurrencyPipe, DatePipe, TitleCasePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-transaction-date-header',
-  imports: [DatePipe, CurrencyPipe],
+  imports: [DatePipe, CurrencyPipe, TitleCasePipe],
   templateUrl: './transaction-date-header.component.html',
   styleUrl: './transaction-date-header.component.scss',
 })

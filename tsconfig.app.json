@@ -10,7 +10,9 @@
       "@features/*": ["src/app/features/*"],
       "@shared/*": ["src/app/shared/*"]
     },
-    "types": []
+    "types": [
+      "@angular/localize"
+    ]
   },
   "files": ["src/main.ts"],
   "include": ["src/**/*.d.ts"]
