@@ -61,7 +61,6 @@ export class WalletAccountComponent implements OnChanges, OnInit {
       Validators.minLength(3),
     ]),
     color: this.formBuilder.control<string | null>(null, [
-      Validators.required,
       Validators.pattern(/^#[0-9A-Fa-f]{6}$/),
     ]),
     amount: this.formBuilder.control<number | null>(null, [

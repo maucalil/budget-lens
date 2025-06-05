@@ -2,11 +2,7 @@
   class="transactions-header flex flex-wrap flex-col flex-row-sm items-center-sm justify-between-sm gap-3 p-3">
   <h3>Suas transações</h3>
   <div class="flex flex-wrap gap-3">
-    <app-button [icon]="faPlus" (clicked)="onAddClick()">
-      Adicionar
-    </app-button>
-    <app-button [icon]="faFilter" (clicked)="onFilterClick()">
-      Filtros
-    </app-button>
+    <app-button text="Adicionar" [icon]="faPlus" (clicked)="onAddClick()" />
+    <app-button text="Filtros" [icon]="faFilter" (clicked)="onFilterClick()" />
   </div>
 </div>

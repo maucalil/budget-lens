@@ -20,7 +20,7 @@
           [disabled]="isEditing() && accountForm.invalid" />
         <app-button
           (clicked)="isEditing() ? cancel() : delete()"
-          [type]="isEditing() ? 'primary' : 'secondary'"
+          [type]="'secondary'"
           [icon]="isEditing() ? faXmark : faTrash" />
       </div>
     </div>

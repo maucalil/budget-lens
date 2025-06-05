@@ -7,7 +7,12 @@
   (click)="handleClick()"
   class="inline-flex justify-center items-center px-3 py-2">
   @if (icon) {
-    <fa-icon [icon]="icon" size="sm" class="mr-2" />
+    <fa-icon [icon]="icon" size="sm" />
   }
-  <ng-content />
+
+  @if (text) {
+    <span [class.ml-2]="icon">
+      {{ text }}
+    </span>
+  }
 </button>

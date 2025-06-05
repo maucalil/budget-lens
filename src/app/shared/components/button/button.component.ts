@@ -12,6 +12,7 @@ import { IconProp } from 'node_modules/@fortawesome/angular-fontawesome/types';
 export class ButtonComponent {
   @Input() type: 'primary' | 'secondary' = 'primary';
   @Input() disabled = false;
+  @Input() text = '';
   @Input() icon: IconProp | null = null;
   @Output() clicked = new EventEmitter<void>();
 

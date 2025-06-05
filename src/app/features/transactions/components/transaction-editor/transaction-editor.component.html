@@ -1,17 +1,18 @@
 <app-drawer [isOpen]="isOpen" (closed)="close()">
   <div ngProjectAs="drawer-header" class="flex flex-wrap gap-3">
     @if (transaction && !isEditing) {
-      <app-button [icon]="faPen" (clicked)="edit()">Editar</app-button>
+      <app-button text="Editar" [icon]="faPen" (clicked)="edit()" />
     } @else {
       <app-button
+        text="Salvar"
         [icon]="faCheck"
         [disabled]="!transactionForm.valid"
-        (clicked)="submit()">
-        Salvar
-      </app-button>
-      <app-button type="secondary" [icon]="faBan" (clicked)="cancel()">
-        Cancelar
-      </app-button>
+        (clicked)="submit()" />
+      <app-button
+        type="secondary"
+        text="Cancelar"
+        [icon]="faBan"
+        (clicked)="cancel()" />
     }
   </div>
 
