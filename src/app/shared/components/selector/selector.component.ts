@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-shared-selector',
+  selector: 'app-selector',
   imports: [CommonModule],
   templateUrl: './selector.component.html',
   styleUrl: './selector.component.scss',

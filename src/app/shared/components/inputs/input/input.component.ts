@@ -12,7 +12,7 @@ type AllowedInputTypes =
   | 'date';
 
 @Component({
-  selector: 'app-shared-input',
+  selector: 'app-input',
   imports: [FormFieldComponent, ReactiveFormsModule],
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],

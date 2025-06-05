@@ -12,9 +12,9 @@
   [class.open]="isOpen">
   <header class="flex justify-between items-center gap-3 px-3 py-2">
     <ng-content select="drawer-header" />
-    <app-shared-button [icon]="faXmark" (clicked)="close()">
+    <app-button [icon]="faXmark" (clicked)="close()">
       Fechar
-    </app-shared-button>
+    </app-button>
   </header>
 
   <section class="overflow-y-auto p-3">

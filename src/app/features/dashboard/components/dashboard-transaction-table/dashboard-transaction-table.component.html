@@ -1,4 +1,4 @@
-<app-shared-card>
+<app-card>
   <h2 class="text-xl mb-2">Transações Recentes</h2>
 
   <div class="overflow-x-auto">
@@ -22,17 +22,17 @@
           <td>{{ row.amount | currency: row.currency }}</td>
           <td>{{ row.date }}</td>
           <td>
-            <app-shared-badge
+            <app-badge
               [text]="row.category.name"
-              [color]="row.category.color"></app-shared-badge>
+              [color]="row.category.color"></app-badge>
           </td>
           <td>
-            <app-shared-badge
+            <app-badge
               [text]="row.account.name + ' - ' + row.paymentMethod"
-              [color]="row.account.color"></app-shared-badge>
+              [color]="row.account.color"></app-badge>
           </td>
         </tr>
       }
     </table>
   </div>
-</app-shared-card>
+</app-card>

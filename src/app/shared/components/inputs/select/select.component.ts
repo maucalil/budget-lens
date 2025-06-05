@@ -4,7 +4,7 @@ import { BaseFormControlComponent } from '@shared/components/inputs/base-form-co
 import { FormFieldComponent } from '@shared/components/inputs/form-field/form-field.component';
 
 @Component({
-  selector: 'app-shared-select',
+  selector: 'app-select',
   imports: [FormFieldComponent, ReactiveFormsModule],
   templateUrl: './select.component.html',
   styleUrl: './select.component.scss',

@@ -11,7 +11,7 @@
       <span>{{ placeholder }}</span>
     }
     @for (option of options; track $index) {
-      <app-shared-badge
+      <app-badge
         [class.hidden]="isReadOnly && !isSelected(option)"
         [text]="resolveOptionLabel(option)"
         [color]="isSelected(option) ? selectedColor : unselectedColor"

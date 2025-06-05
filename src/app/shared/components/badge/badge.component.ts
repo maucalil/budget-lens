@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-shared-badge',
+  selector: 'app-badge',
   imports: [NgClass],
   templateUrl: './badge.component.html',
   styleUrl: './badge.component.scss',
