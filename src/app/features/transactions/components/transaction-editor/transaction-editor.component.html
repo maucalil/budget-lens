@@ -1,9 +1,7 @@
 <app-drawer [isOpen]="isOpen" (closed)="close()">
   <div ngProjectAs="drawer-header" class="flex flex-wrap gap-3">
     @if (transaction && !isEditing) {
-      <app-button [icon]="faPen" (clicked)="edit()">
-        Editar
-      </app-button>
+      <app-button [icon]="faPen" (clicked)="edit()">Editar</app-button>
     } @else {
       <app-button
         [icon]="faCheck"
@@ -32,13 +30,14 @@
       [formActive]="isEditing"
       [label]="'Valor'"
       [placeholder]="'Valor'"
-      [type]="'number'" />
+      [mask]="'separator.2'"
+      [prefix]="'R$ '" />
 
     <app-input
       [control]="transactionForm.controls.date"
       [formActive]="isEditing"
       [label]="'Data'"
-      [placeholder]="'Data'"
+      [placeholder]="'dd/mm/yyyy'"
       [type]="'date'" />
 
     <app-select
