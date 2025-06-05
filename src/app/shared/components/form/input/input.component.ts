@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BaseFormControlComponent } from '@shared/components/inputs/base-form-control.component';
-import { FormFieldComponent } from '@shared/components/inputs/form-field/form-field.component';
+import {
+  BaseFormControlComponent,
+  FormFieldComponent,
+} from '@shared/components/form';
 
 type AllowedInputTypes =
   | 'text'

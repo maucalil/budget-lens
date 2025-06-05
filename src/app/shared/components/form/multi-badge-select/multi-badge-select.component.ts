@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { BadgeComponent } from '@shared/components/badge/badge.component';
-import { BaseFormControlComponent } from '@shared/components/inputs/base-form-control.component';
-import { FormFieldComponent } from '@shared/components/inputs/form-field/form-field.component';
+import {
+  BaseFormControlComponent,
+  FormFieldComponent,
+} from '@shared/components/form';
 
 @Component({
   selector: 'app-multi-badge-select',
