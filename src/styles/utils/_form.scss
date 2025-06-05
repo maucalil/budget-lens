@@ -36,6 +36,8 @@
 
   &.readonly {
     cursor: default;
+    pointer-events: none;
+    touch-action: none;
 
     &.underline {
       border: none;

@@ -1,5 +1,5 @@
 <div
   class="transaction-date-header flex justify-between items-center px-3 py-2">
-  <span>{{ date | date: 'dd MMMM, yyyy' }}</span>
-  <span>{{ totalAmount | currency }}</span>
+  <span>{{ date | date: 'dd MMMM, yyyy' | titlecase }}</span>
+  <span>{{ totalAmount | currency: 'BRL' }}</span>
 </div>

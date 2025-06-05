@@ -1,0 +1,21 @@
+<app-form-field
+  [label]="label"
+  [fieldId]="fieldId"
+  [isInvalid]="isInvalid"
+  [errorMessage]="errorMessage">
+  <div
+    class="form-control flex flex-wrap items-center gap-3 px-3 py-2"
+    [class]="classes"
+    [id]="fieldId">
+    @if (noOptionsSelected && !formActive) {
+      <span>{{ placeholder }}</span>
+    }
+    @for (option of options; track $index) {
+      <app-badge
+        [class.hidden]="isReadOnly && !isSelected(option)"
+        [text]="resolveOptionLabel(option)"
+        [color]="isSelected(option) ? selectedColor : unselectedColor"
+        (clicked)="toggleSelection(option)" />
+    }
+  </div>
+</app-form-field>

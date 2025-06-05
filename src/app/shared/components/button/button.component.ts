@@ -4,7 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconProp } from 'node_modules/@fortawesome/angular-fontawesome/types';
 
 @Component({
-  selector: 'app-shared-button',
+  selector: 'app-button',
   imports: [FontAwesomeModule, NgClass],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',

@@ -1,10 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BaseFormControlComponent } from '@shared/components/inputs/base-form-control.component';
-import { FormFieldComponent } from '@shared/components/inputs/form-field/form-field.component';
+import {
+  BaseFormControlComponent,
+  FormFieldComponent,
+} from '@shared/components/form';
 
 @Component({
-  selector: 'app-shared-select',
+  selector: 'app-select',
   imports: [FormFieldComponent, ReactiveFormsModule],
   templateUrl: './select.component.html',
   styleUrl: './select.component.scss',

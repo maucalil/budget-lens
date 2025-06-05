@@ -1,0 +1,13 @@
+@use 'utils/colors' as *;
+
+.form-control {
+  border: none;
+
+  * {
+    cursor: pointer;
+  }
+
+  span {
+    color: $color-text-medium;
+  }
+}

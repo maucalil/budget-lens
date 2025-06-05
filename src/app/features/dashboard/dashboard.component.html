@@ -5,16 +5,16 @@
   </div>
   <div class="flex gap-2 justify-end">
     <div class="flex flex-col justify-end">
-      <app-shared-selector
+      <app-selector
         [selectedOption]="selectedYear"
         [options]="years"
-        (selectionChange)="onYearChange($event)"></app-shared-selector>
+        (selectionChange)="onYearChange($event)"></app-selector>
     </div>
     <div class="flex flex-col justify-end">
-      <app-shared-selector
+      <app-selector
         [selectedOption]="selectedMonth"
         [options]="months"
-        (selectionChange)="onMonthChange($event)"></app-shared-selector>
+        (selectionChange)="onMonthChange($event)"></app-selector>
     </div>
   </div>
 </div>

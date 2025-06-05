@@ -12,8 +12,7 @@ import { Account, Category, Transaction } from '@core/models';
 import { faBan, faCheck, faPen } from '@fortawesome/free-solid-svg-icons';
 import { ButtonComponent } from '@shared/components';
 import { DrawerComponent } from '@shared/components/drawer/drawer.component';
-import { InputComponent } from '@shared/components/inputs/input/input.component';
-import { SelectComponent } from '@shared/components/inputs/select/select.component';
+import { InputComponent, SelectComponent } from '@shared/components/form';
 import { PaymentMethod } from '@shared/enums';
 
 @Component({

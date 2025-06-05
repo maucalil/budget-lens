@@ -1,7 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BaseFormControlComponent } from '@shared/components/inputs/base-form-control.component';
-import { FormFieldComponent } from '@shared/components/inputs/form-field/form-field.component';
+import {
+  BaseFormControlComponent,
+  FormFieldComponent,
+} from '@shared/components/form';
+import { NgxMaskDirective } from 'ngx-mask';
 
 type AllowedInputTypes =
   | 'text'
@@ -12,11 +15,13 @@ type AllowedInputTypes =
   | 'date';
 
 @Component({
-  selector: 'app-shared-input',
-  imports: [FormFieldComponent, ReactiveFormsModule],
+  selector: 'app-input',
+  imports: [FormFieldComponent, ReactiveFormsModule, NgxMaskDirective],
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent extends BaseFormControlComponent {
   @Input() type: AllowedInputTypes = 'text';
+  @Input() mask?: string;
+  @Input() prefix = '';
 }

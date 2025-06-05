@@ -1,19 +1,17 @@
-<app-shared-drawer [isOpen]="isOpen" (closed)="close()">
+<app-drawer [isOpen]="isOpen" (closed)="close()">
   <div ngProjectAs="drawer-header" class="flex flex-wrap gap-3">
     @if (transaction && !isEditing) {
-      <app-shared-button [icon]="faPen" (clicked)="edit()">
-        Editar
-      </app-shared-button>
+      <app-button [icon]="faPen" (clicked)="edit()">Editar</app-button>
     } @else {
-      <app-shared-button
+      <app-button
         [icon]="faCheck"
         [disabled]="!transactionForm.valid"
         (clicked)="submit()">
         Salvar
-      </app-shared-button>
-      <app-shared-button type="secondary" [icon]="faBan" (clicked)="cancel()">
+      </app-button>
+      <app-button type="secondary" [icon]="faBan" (clicked)="cancel()">
         Cancelar
-      </app-shared-button>
+      </app-button>
     }
   </div>
 
@@ -21,27 +19,28 @@
     ngProjectAs="drawer-content"
     class="flex flex-col gap-3"
     [formGroup]="transactionForm">
-    <app-shared-input
+    <app-input
       [control]="transactionForm.controls.name"
       [formActive]="isEditing"
       [label]="'Nome'"
       [placeholder]="'Nome'" />
 
-    <app-shared-input
+    <app-input
       [control]="transactionForm.controls.amount"
       [formActive]="isEditing"
       [label]="'Valor'"
       [placeholder]="'Valor'"
-      [type]="'number'" />
+      [mask]="'separator.2'"
+      [prefix]="'R$ '" />
 
-    <app-shared-input
+    <app-input
       [control]="transactionForm.controls.date"
       [formActive]="isEditing"
       [label]="'Data'"
-      [placeholder]="'Data'"
+      [placeholder]="'dd/mm/yyyy'"
       [type]="'date'" />
 
-    <app-shared-select
+    <app-select
       [control]="transactionForm.controls.account"
       [formActive]="isEditing"
       [label]="'Conta'"
@@ -49,14 +48,14 @@
       [options]="accounts"
       [optionLabelKey]="'name'" />
 
-    <app-shared-select
+    <app-select
       [control]="transactionForm.controls.paymentMethod"
       [formActive]="isEditing"
       [label]="'Método de Pagamento'"
       [placeholder]="'Selecione um método de pagamento'"
       [options]="paymentMethods" />
 
-    <app-shared-select
+    <app-select
       [control]="transactionForm.controls.category"
       [formActive]="isEditing"
       [label]="'Categoria'"
@@ -64,10 +63,10 @@
       [options]="categories"
       [optionLabelKey]="'name'" />
 
-    <app-shared-select
+    <app-select
       [control]="transactionForm.controls.isIncome"
       [formActive]="isEditing"
       [label]="'Tipo'"
       [placeholder]="'Tipo'" />
   </form>
-</app-shared-drawer>
+</app-drawer>

@@ -3,7 +3,7 @@ import { ButtonComponent } from '../button/button.component';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-shared-drawer',
+  selector: 'app-drawer',
   imports: [ButtonComponent],
   templateUrl: './drawer.component.html',
   styleUrl: './drawer.component.scss',
