@@ -1,10 +1,10 @@
 <span
-  class="badge inline-block px-3"
+  class="badge inline-block px-3 py-1"
   [ngClass]="widthClass"
   [style.background-color]="color"
   (click)="onClick()"
-  (keydown.enter)="onClick()"
   role="button"
+  (keydown.enter)="onClick()"
   tabindex="0">
   {{ text }}
 </span>
