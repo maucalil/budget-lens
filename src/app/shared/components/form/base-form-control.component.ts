@@ -9,6 +9,7 @@ import { FormControl } from '@angular/forms';
 
 type State = 'readonly' | 'editable' | 'disabled' | 'invalid';
 type Style = 'box' | 'underline';
+type TextSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
 @Component({
   template: '',
@@ -17,6 +18,8 @@ export class BaseFormControlComponent implements OnInit, OnChanges {
   private static _nextId = 0;
 
   @Input() label = '';
+  @Input() labelSize: TextSize = 'md';
+  @Input() fieldTextSize: TextSize = 'md';
   @Input() placeholder = '';
   @Input() styleType: Style = 'box';
   @Input({ required: true }) control!: FormControl;
@@ -62,7 +65,9 @@ export class BaseFormControlComponent implements OnInit, OnChanges {
   }
 
   get classes() {
-    return [this.styleType, this._state].join(' ');
+    return [this.styleType, this._state, `text-${this.fieldTextSize}`].join(
+      ' '
+    );
   }
 
   get errorMessage(): string | null {
