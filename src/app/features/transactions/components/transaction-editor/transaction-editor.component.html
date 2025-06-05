@@ -1,0 +1,73 @@
+<app-shared-drawer [isOpen]="isOpen" (closed)="close()">
+  <div ngProjectAs="drawer-header" class="flex flex-wrap gap-3">
+    @if (transaction && !isEditing) {
+      <app-shared-button [icon]="faPen" (clicked)="edit()">
+        Editar
+      </app-shared-button>
+    } @else {
+      <app-shared-button
+        [icon]="faCheck"
+        [disabled]="!transactionForm.valid"
+        (clicked)="submit()">
+        Salvar
+      </app-shared-button>
+      <app-shared-button type="secondary" [icon]="faBan" (clicked)="cancel()">
+        Cancelar
+      </app-shared-button>
+    }
+  </div>
+
+  <form
+    ngProjectAs="drawer-content"
+    class="flex flex-col gap-3"
+    [formGroup]="transactionForm">
+    <app-shared-input
+      [control]="transactionForm.controls.name"
+      [formActive]="isEditing"
+      [label]="'Nome'"
+      [placeholder]="'Nome'" />
+
+    <app-shared-input
+      [control]="transactionForm.controls.amount"
+      [formActive]="isEditing"
+      [label]="'Valor'"
+      [placeholder]="'Valor'"
+      [type]="'number'" />
+
+    <app-shared-input
+      [control]="transactionForm.controls.date"
+      [formActive]="isEditing"
+      [label]="'Data'"
+      [placeholder]="'Data'"
+      [type]="'date'" />
+
+    <app-shared-select
+      [control]="transactionForm.controls.account"
+      [formActive]="isEditing"
+      [label]="'Conta'"
+      [placeholder]="'Selecione uma conta'"
+      [options]="accounts"
+      [optionLabelKey]="'name'" />
+
+    <app-shared-select
+      [control]="transactionForm.controls.paymentMethod"
+      [formActive]="isEditing"
+      [label]="'Método de Pagamento'"
+      [placeholder]="'Selecione um método de pagamento'"
+      [options]="paymentMethods" />
+
+    <app-shared-select
+      [control]="transactionForm.controls.category"
+      [formActive]="isEditing"
+      [label]="'Categoria'"
+      [placeholder]="'Categoria'"
+      [options]="categories"
+      [optionLabelKey]="'name'" />
+
+    <app-shared-select
+      [control]="transactionForm.controls.isIncome"
+      [formActive]="isEditing"
+      [label]="'Tipo'"
+      [placeholder]="'Tipo'" />
+  </form>
+</app-shared-drawer>

@@ -1,70 +1,23 @@
-@use 'sass:color';
-@use 'utils/colors' as *;
-
-input {
-  outline: none;
-  background-color: transparent;
-  color: $color-text;
-  transition: border-color 0.2s;
-
-  &:focus:not(.disabled) {
-    border-color: $color-text;
-  }
-
-  &.box {
-    border: 1px solid $color-text-medium;
-    border-radius: 0.25rem;
-  }
-
-  &.underline {
-    border: none;
-    border-bottom: 2px solid $color-text-medium;
-  }
-
-  &.disabled {
-    background-color: $color-grey;
-    border-color: transparent;
-    border-radius: 0.25rem;
-    color: $color-text-disabled;
-    cursor: not-allowed;
-  }
-
-  &.invalid {
-    border-color: $color-error;
-  }
-
-  &.readonly {
-    cursor: default;
-
-    &.underline {
-      border: none;
-    }
-
-    &::placeholder {
-      color: transparent;
-    }
-  }
-}
-
-.input-error {
-  color: $color-error;
-}
-
-input[type='number']::-webkit-inner-spin-button,
-input[type='number']::-webkit-outer-spin-button {
+input[type='number'] {
   -webkit-appearance: none;
-  margin: 0;
+  -moz-appearance: none;
+  appearance: none;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 
-input[type='date']::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-  cursor: pointer;
-  opacity: 1;
-}
-
-input[type='number'],
 input[type='date'] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+
+  &::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+    opacity: 1;
+  }
 }

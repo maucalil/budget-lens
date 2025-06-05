@@ -5,23 +5,28 @@
   </div>
 
   <app-transactions-header
-    (addClicked)="openAddPanel()"
-    (filterClicked)="openFilterPanel()">
-  </app-transactions-header>
+    (addClicked)="openTransactionEditor()"
+    (filterClicked)="openFilterPanel()" />
 
   <section class="transaction-list overflow-y-auto">
     @for (group of groupedTransactions; track group.date) {
       <div class="date-header-wrapper">
         <app-transaction-date-header
           [date]="group.date"
-          [totalAmount]="group.totalAmount"></app-transaction-date-header>
+          [totalAmount]="group.totalAmount" />
       </div>
 
       @for (transaction of group.transactions; track transaction.id) {
         <app-transaction-item
           [transaction]="transaction"
-          (selected)="onTransactionSelected($event)"></app-transaction-item>
+          (selected)="onTransactionSelected($event)" />
       }
     }
   </section>
+
+  <app-transaction-editor
+    [isOpen]="isTransactionEditorOpen"
+    [transaction]="selectedTransaction"
+    (closed)="closeTransactionEditor()"
+    (submitted)="onTransactionSubmission($event)" />
 </div>

@@ -1,0 +1,15 @@
+<div class="flex flex-col">
+  @if (label) {
+    <label class="text-md mb-1" [for]="fieldId">
+      {{ label }}
+    </label>
+  }
+
+  <ng-content />
+
+  @if (isInvalid && errorMessage) {
+    <span class="has-error text-sm mt-1">
+      {{ errorMessage }}
+    </span>
+  }
+</div>
