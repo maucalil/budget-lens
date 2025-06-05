@@ -1,0 +1,23 @@
+@use 'utils/colors' as *;
+
+select {
+  cursor: pointer;
+
+  &.readonly {
+    pointer-events: none;
+    touch-action: none;
+  }
+
+  &.placeholder-selected {
+    color: $color-text-medium;
+  }
+
+  option {
+    background-color: $color-surface;
+    color: $color-text;
+
+    &:first-of-type {
+      color: $color-text-medium;
+    }
+  }
+}
