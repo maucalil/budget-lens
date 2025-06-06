@@ -119,7 +119,6 @@ export class WalletAccountComponent implements OnChanges, OnInit {
   close() {
     this.isEditing.update(() => false);
     this.accountForm.reset();
-    console.log('close');
     this.closed.emit();
   }
 
