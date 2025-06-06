@@ -1,5 +1,6 @@
 // Import tokens if needed
 @use 'sass:map';
+@use 'utils/colors' as *;
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
@@ -33,8 +34,8 @@
 // Body
 body {
   overflow-x: hidden;
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: $color-bg;
+  color: $color-text;
 }
 
 // Headings
@@ -46,7 +47,7 @@ h5,
 h6 {
   font-weight: 600;
   line-height: 1.2;
-  color: var(--color-text);
+  color: $color-text;
 }
 
 h1 {
@@ -70,11 +71,11 @@ h6 {
 
 // Links
 a {
-  color: var(--color-text);
+  color: $color-text;
   text-decoration: none;
 
   &:hover {
-    color: var(--color-medium);
+    color: $color-text-medium;
   }
 }
 
@@ -84,5 +85,5 @@ button {
   cursor: pointer;
   border: none;
   background: none;
-  color: var(--color-text);
+  color: $color-text;
 }

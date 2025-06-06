@@ -1,7 +1,9 @@
+@use 'utils/colors' as *;
+
 select {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  border: 2px solid var(--color-grey);
+  background-color: $color-bg;
+  color: $color-text;
+  border: 2px solid $color-grey;
   border-radius: 10px;
 
   &:hover,
@@ -13,11 +15,11 @@ select {
 
   &:hover {
     cursor: pointer;
-    background-color: var(--color-surface);
+    background-color: $color-surface;
   }
 }
 
 option {
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: $color-bg;
+  color: $color-text;
 }

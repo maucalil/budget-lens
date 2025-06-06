@@ -1,7 +1,9 @@
+@use 'utils/colors' as *;
+
 .icon {
   width: 16px;
   height: 16px;
-  color: var(--color-text-bg);
+  color: $color-text-bg;
   cursor: pointer;
 }
 

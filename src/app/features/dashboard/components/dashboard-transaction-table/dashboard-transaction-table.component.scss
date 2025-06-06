@@ -1,5 +1,7 @@
+@use 'utils/colors' as *;
+
 h2 {
-  color: var(--color-text-medium);
+  color: $color-text-medium;
 }
 
 table {
@@ -11,14 +13,14 @@ table {
 th,
 td {
   padding: 10px;
-  border: 2px solid var(--color-surface-variant);
+  border: 2px solid $color-surface-variant;
   white-space: nowrap;
   text-align: center;
 }
 
 th {
   font-weight: bold;
-  color: var(--color-text-medium);
+  color: $color-text-medium;
   border-top: none;
   border-left: none;
   border-right: none;
@@ -28,7 +30,7 @@ tr:not(:first-child) td {
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: 2px solid var(--color-surface-variant);
+  border-bottom: 2px solid $color-surface-variant;
 }
 
 tr:last-child td {
@@ -36,13 +38,13 @@ tr:last-child td {
 }
 
 tr:hover {
-  background-color: var(--color-surface-variant);
+  background-color: $color-surface-variant;
 }
 
 .iconIncome {
-  color: var(--color-success);
+  color: $color-success;
 }
 
 .iconExpense {
-  color: var(--color-error);
+  color: $color-error;
 }
