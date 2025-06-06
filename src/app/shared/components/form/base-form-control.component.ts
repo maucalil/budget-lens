@@ -52,6 +52,10 @@ export class BaseFormControlComponent implements OnInit, OnChanges {
     }
   }
 
+  onBlur() {
+    this.updateState();
+  }
+
   get isDisabled() {
     return this._state === 'disabled';
   }

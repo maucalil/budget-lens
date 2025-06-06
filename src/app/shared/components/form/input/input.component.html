@@ -13,5 +13,6 @@
     [attr.placeholder]="placeholder"
     [readonly]="isReadOnly"
     [mask]="mask"
-    [prefix]="prefix" />
+    [prefix]="prefix"
+    (blur)="onBlur()" />
 </app-form-field>
