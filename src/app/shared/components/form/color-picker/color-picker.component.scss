@@ -17,3 +17,8 @@
   border: none;
   border-radius: 50%;
 }
+
+.readonly {
+  pointer-events: none;
+  touch-action: none;
+}
