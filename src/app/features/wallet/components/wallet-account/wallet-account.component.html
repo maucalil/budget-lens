@@ -1,0 +1,59 @@
+<app-card>
+  <div class="flex flex-col gap-4 pb-2">
+    <div class="flex flex-wrap-reverse items-center justify-end">
+      <app-color-picker
+        [control]="accountForm.controls.color"
+        [formActive]="isEditing()" />
+      <div class="flex-1 min-w-1/2 mr-3">
+        <app-input
+          [control]="accountForm.controls.name"
+          [formActive]="isEditing()"
+          [styleType]="'underline'"
+          [fieldTextSize]="'2xl'"
+          [placeholder]="'Nome'" />
+      </div>
+      <div class="flex gap-3 mb-2">
+        <app-button
+          (clicked)="isEditing() ? save() : edit()"
+          [type]="'primary'"
+          [icon]="isEditing() ? faCheck : faEdit"
+          [disabled]="isEditing() && accountForm.invalid" />
+        <app-button
+          (clicked)="isEditing() ? cancel() : delete()"
+          [type]="'secondary'"
+          [icon]="isEditing() ? faXmark : faTrash" />
+      </div>
+    </div>
+
+    <div
+      class="grid grid-cols-1 grid-cols-2-sm gap-3 justify-between items-center px-3">
+      <app-input
+        [control]="accountForm.controls.amount"
+        [formActive]="isEditing()"
+        [styleType]="'underline'"
+        [label]="'Saldo'"
+        [placeholder]="'Saldo'"
+        [labelSize]="'lg'"
+        [mask]="'separator.2'"
+        [prefix]="'R$ '" />
+      <app-input
+        [control]="accountForm.controls.budget"
+        [formActive]="isEditing()"
+        [styleType]="'underline'"
+        [label]="'Budget Mensal'"
+        [placeholder]="'Budget Mensal'"
+        [labelSize]="'lg'"
+        [mask]="'separator.2'"
+        [prefix]="'R$ '" />
+    </div>
+
+    <div class="px-3">
+      <app-multi-badge-select
+        [control]="accountForm.controls.paymentMethods"
+        [formActive]="isEditing()"
+        [options]="allPaymentMethods"
+        [label]="'Métodos de Pagamento'"
+        [labelSize]="'lg'" />
+    </div>
+  </div>
+</app-card>

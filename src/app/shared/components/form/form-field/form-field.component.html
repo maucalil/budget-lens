@@ -1,6 +1,6 @@
 <div class="flex flex-col">
   @if (label) {
-    <label class="text-md mb-1" [for]="fieldId">
+    <label class="mb-1" [ngClass]="'text-' + labelSize" [for]="fieldId">
       {{ label }}
     </label>
   }

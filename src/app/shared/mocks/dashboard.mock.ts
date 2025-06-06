@@ -2,8 +2,8 @@ import { DashboardCashCardData } from '@features/dashboard/models/dashboard-cash
 import { DashboardTableRowData } from '@features/dashboard/models/dashboard-table-row-data.interface';
 import {
   faBalanceScale,
-  faMoneyBillTrendUp,
-  faDownLong,
+  faArrowTrendUp,
+  faArrowTrendDown,
   faMoneyBillWave,
 } from '@fortawesome/free-solid-svg-icons';
 import { Currency, PaymentMethod } from '@shared/enums';
@@ -13,20 +13,20 @@ export const MOCK_CASH_CARD_DATA: DashboardCashCardData[] = [
   {
     amount: 5000,
     currency: Currency.BRL,
-    name: 'Total Balance',
+    name: 'Saldo Total',
     icon: faBalanceScale,
   },
   {
     amount: 500000,
     currency: Currency.USD,
-    name: 'Total Earnings',
-    icon: faMoneyBillTrendUp,
+    name: 'Ganhos Totais',
+    icon: faArrowTrendUp,
   },
   {
     amount: 3000,
     currency: Currency.EUR,
-    name: 'Total Spending',
-    icon: faDownLong,
+    name: 'Gastos Totais',
+    icon: faArrowTrendDown,
   },
   {
     amount: 100,
@@ -40,7 +40,7 @@ export const MOCK_DASHBOARD_TRANSACTIONS: DashboardTableRowData[] = [
   {
     isIncome: false,
     name: 'Compra no Mercado',
-    date: '2025-05-01',
+    date: '01/05/2025',
     amount: 150.75,
     account: { name: 'Banco do Brasil', color: '#5A85A9' },
     category: { name: 'Supermercado', color: '#A79AFF' },
@@ -50,7 +50,7 @@ export const MOCK_DASHBOARD_TRANSACTIONS: DashboardTableRowData[] = [
   {
     isIncome: true,
     name: 'Salário',
-    date: '2025-05-05',
+    date: '01/05/2025',
     amount: 5000.0,
     account: { name: 'Nubank', color: '#5A85A9' },
     category: { name: 'Salário', color: '#A79AFF' },
@@ -60,7 +60,7 @@ export const MOCK_DASHBOARD_TRANSACTIONS: DashboardTableRowData[] = [
   {
     isIncome: false,
     name: 'Assinatura Netflix',
-    date: '2025-05-10',
+    date: '01/05/2025',
     amount: 39.9,
     account: { name: 'Banco do Brasil', color: '#5A85A9' },
     category: { name: 'Streaming', color: '#A79AFF' },
@@ -70,7 +70,7 @@ export const MOCK_DASHBOARD_TRANSACTIONS: DashboardTableRowData[] = [
   {
     isIncome: false,
     name: 'Aluguel',
-    date: '2025-05-01',
+    date: '01/05/2025',
     amount: 1200.0,
     account: { name: 'Banco do Brasil', color: '#5A85A9' },
     category: { name: 'Casa', color: '#A79AFF' },
@@ -80,7 +80,7 @@ export const MOCK_DASHBOARD_TRANSACTIONS: DashboardTableRowData[] = [
   {
     isIncome: false,
     name: 'Uber',
-    date: '2025-05-12',
+    date: '01/05/2025',
     amount: 23.5,
     account: { name: 'Nubank', color: '#5A85A9' },
     category: { name: 'Transporte', color: '#A79AFF' },
@@ -108,13 +108,13 @@ export const DASHBOARD_INCOME_EXPENSES_CHART_DATA: ChartConfiguration['data'] =
     datasets: [
       {
         data: [400, 300, 600, 630, 580, 650, 900, 1050, 700, 1200, 830, 780],
-        label: 'Income',
+        label: 'Ganhos',
         borderColor: '#66bb6a',
         backgroundColor: '#66bb6a',
       },
       {
         data: [800, 1250, 1000, 600, 850, 500, 480, 300, 420, 500, 1500, 1000],
-        label: 'Expenses',
+        label: 'Gastos',
         borderColor: '#ef5350',
         backgroundColor: '#ef5350',
       },

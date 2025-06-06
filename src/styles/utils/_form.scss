@@ -40,7 +40,7 @@
     touch-action: none;
 
     &.underline {
-      border: none;
+      border-color: transparent;
     }
 
     &::placeholder {
