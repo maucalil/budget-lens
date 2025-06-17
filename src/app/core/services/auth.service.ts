@@ -20,13 +20,18 @@ export class AuthService {
   private loggedIn$ = new BehaviorSubject<boolean | null>(null);
   private http = inject(HttpClient);
 
-  register(data: UserCreateDto): Observable<ApiResponse<User>> {
-    return this.http.post<ApiResponse<User>>(`${this.baseUrl}`, data);
+  register(userCreateDto: UserCreateDto): Observable<User> {
+    return this.http
+      .post<ApiResponse<User>>(`${this.baseUrl}`, userCreateDto)
+      .pipe(
+        filter(res => res.success),
+        map(res => res.data)
+      );
   }
 
-  login(data: UserLoginDto): Observable<null> {
+  login(userLoginDto: UserLoginDto): Observable<null> {
     return this.http
-      .post<null>(`${this.baseUrl}/login`, data, {
+      .post<null>(`${this.baseUrl}/login`, userLoginDto, {
         withCredentials: true,
       })
       .pipe(tap(() => this.loggedIn$.next(true)));

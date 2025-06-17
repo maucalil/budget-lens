@@ -20,22 +20,43 @@
     </button>
   </header>
 
-  <ul class="w-full mt-4">
-    @for (item of sidebarItems; track $index) {
-      <li class="w-full mb-4 last:mb-0">
-        <a
-          class="flex items-center gap-3 px-3 py-2"
-          [class.justify-center]="!isExpanded()"
-          [routerLink]="item.link"
-          [routerLinkActive]="'active'"
-          [routerLinkActiveOptions]="{ exact: true }"
-          (click)="isMobileVisible.set(false)">
-          <fa-icon [icon]="item.icon" size="lg"></fa-icon>
-          @if (isExpanded()) {
-            <span class="font-bold">{{ item.label }}</span>
-          }
-        </a>
-      </li>
-    }
-  </ul>
+  <div class="flex flex-col justify-between h-full w-full mt-4">
+    <ul>
+      @for (item of sidebarItems; track $index) {
+        <li class="w-full mb-4 last:mb-0">
+          <a
+            class="flex items-center gap-3 px-3 py-2"
+            [class.justify-center]="!isExpanded()"
+            [routerLink]="item.link"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="isMobileVisible.set(false)">
+            <fa-icon [icon]="item.icon" size="lg"></fa-icon>
+            @if (isExpanded()) {
+              <span class="font-bold">{{ item.label }}</span>
+            }
+          </a>
+        </li>
+      }
+    </ul>
+
+    <ul>
+      @for (item of sidebarFooterItems; track $index) {
+        <li class="w-full mb-4 last:mb-0">
+          <a
+            class="flex items-center gap-3 px-3 py-2"
+            [class.justify-center]="!isExpanded()"
+            [routerLink]="item.link"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="logout()">
+            <fa-icon [icon]="item.icon" size="lg"></fa-icon>
+            @if (isExpanded()) {
+              <span class="font-bold">{{ item.label }}</span>
+            }
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
 </nav>
