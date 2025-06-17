@@ -1,7 +1,7 @@
 export enum PaymentMethod {
-  CASH = 'Dinheiro',
-  CREDIT_CARD = 'Crédito',
-  DEBIT_CARD = 'Débito',
-  BANK_TRANSFER = 'Tranferência',
-  PIX = 'Pix',
+  CASH = 'CASH',
+  CREDIT_CARD = 'CREDIT_CARD',
+  DEBIT_CARD = 'DEBIT_CARD',
+  BANK_TRANSFER = 'BANK_TRANSFER',
+  PIX = 'PIX',
 }

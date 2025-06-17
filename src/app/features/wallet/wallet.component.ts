@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { WalletAccountComponent } from './components/wallet-account/wallet-account.component';
-import { Account } from '@core/models';
-import { PaymentMethod } from '@shared/enums';
+import { Account, AccountCreateDto, AccountUpdateDto } from '@core/models';
 import { ButtonComponent } from '@shared/components';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { AccountService } from '@core/services';
 
 @Component({
   selector: 'app-wallet',
@@ -11,34 +11,53 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './wallet.component.html',
   styleUrl: './wallet.component.scss',
 })
-export class WalletComponent {
+export class WalletComponent implements OnInit {
+  accounts = signal<(Account | null)[]>([]);
+  isLoading = signal(true);
+
   faPlus = faPlus;
 
-  accounts: (Account | null)[] = [
-    {
-      name: 'Banco do Brasil',
-      color: '#4CAF50',
-      amount: 1200,
-      budget: 2000,
-      paymentMethods: [
-        PaymentMethod.CASH,
-        PaymentMethod.CREDIT_CARD,
-        PaymentMethod.PIX,
-      ],
-    },
-  ];
+  private accountService = inject(AccountService);
 
-  onAdd() {
-    this.accounts = [null, ...this.accounts];
+  ngOnInit(): void {
+    this.accountService.getAll().subscribe({
+      next: data => {
+        this.accounts.set(data);
+        this.isLoading.set(false);
+      },
+      error: () => {
+        this.isLoading.set(false);
+      },
+    });
   }
 
-  onClosed() {
-    if (this.accounts[0] === null) {
-      this.accounts.shift();
+  onAdd(): void {
+    this.accounts.update(accounts => [null, ...accounts]);
+  }
+
+  onClosed(): void {
+    if (this.accounts().length && this.accounts()[0] === null) {
+      this.accounts.update(accounts => accounts.slice(1));
     }
   }
 
-  onSubmitted(account: Account) {
-    this.accounts[0] = account;
+  onSubmitted(dto: AccountCreateDto | AccountUpdateDto): void {
+    const [first, ...existingAccounts] = this.accounts();
+
+    if (first === null) {
+      this.accountService.create(dto as AccountCreateDto).subscribe({
+        next: created => this.accounts.set([created, ...existingAccounts]),
+        error: () => {
+          this.accounts.set(existingAccounts);
+        },
+      });
+      return;
+    }
+
+    if (!first) return;
+
+    this.accountService.update(first.id, dto as AccountUpdateDto).subscribe({
+      next: updated => this.accounts.set([updated, ...existingAccounts]),
+    });
   }
 }

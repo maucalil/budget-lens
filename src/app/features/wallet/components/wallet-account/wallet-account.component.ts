@@ -19,7 +19,7 @@ import {
   faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Account } from '@core/models';
+import { Account, AccountCreateDto, AccountUpdateDto } from '@core/models';
 import {
   ColorPickerComponent,
   InputComponent,
@@ -42,7 +42,7 @@ import {
 export class WalletAccountComponent implements OnChanges, OnInit {
   @Input() account: Account | null = null;
 
-  @Output() submitted = new EventEmitter<Account>();
+  @Output() submitted = new EventEmitter<AccountCreateDto | AccountUpdateDto>();
   @Output() closed = new EventEmitter<void>();
 
   isEditing = signal(false);
@@ -64,10 +64,6 @@ export class WalletAccountComponent implements OnChanges, OnInit {
       Validators.pattern(/^#[0-9A-Fa-f]{6}$/),
     ]),
     amount: this.formBuilder.control<number | null>(null, [
-      Validators.required,
-      Validators.min(0.01),
-    ]),
-    budget: this.formBuilder.control<number | null>(null, [
       Validators.required,
       Validators.min(0.01),
     ]),
@@ -103,7 +99,14 @@ export class WalletAccountComponent implements OnChanges, OnInit {
       return;
     }
 
-    this.submitted.emit(this.accountForm.getRawValue() as Account);
+    const dto = this.accountForm.getRawValue();
+
+    this.submitted.emit(
+      this.account === null
+        ? (dto as AccountCreateDto)
+        : (dto as AccountUpdateDto)
+    );
+
     this.isEditing.set(false);
   }
 
