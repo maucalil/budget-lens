@@ -27,7 +27,12 @@ import {
 import { ButtonComponent } from '@shared/components';
 import { DrawerComponent } from '@shared/components/drawer/drawer.component';
 import { InputComponent, SelectComponent } from '@shared/components/form';
-import { PaymentMethod, TransactionType } from '@shared/enums';
+import {
+  getPaymentMethodLabel,
+  getTransactionTypeLabel,
+  PaymentMethod,
+  TransactionType,
+} from '@shared/enums';
 import { forkJoin } from 'rxjs';
 
 @Component({
@@ -44,6 +49,8 @@ import { forkJoin } from 'rxjs';
 })
 export class TransactionEditorComponent implements OnInit, OnChanges {
   readonly transactionTypes = [TransactionType.INCOME, TransactionType.EXPENSE];
+  readonly getPaymentMethodLabel = getPaymentMethodLabel;
+  readonly getTransactionTypeLabel = getTransactionTypeLabel;
 
   @Input() isOpen = false;
   @Input() transaction: Transaction | null = null;

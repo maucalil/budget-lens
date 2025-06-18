@@ -10,7 +10,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { ButtonComponent, CardComponent } from '@shared/components';
-import { PaymentMethod } from '@shared/enums';
+import { getPaymentMethodLabel, PaymentMethod } from '@shared/enums';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faTrash,
@@ -40,6 +40,8 @@ import {
   styleUrl: './wallet-account.component.scss',
 })
 export class WalletAccountComponent implements OnChanges, OnInit {
+  readonly getPaymentMethodLabel = getPaymentMethodLabel;
+
   @Input() account: Account | null = null;
 
   @Output() submitted = new EventEmitter<AccountCreateDto | AccountUpdateDto>();

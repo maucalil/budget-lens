@@ -19,7 +19,11 @@
 
   <app-badge
     class="account w-full w-auto-lg"
-    [text]="`${transaction.account.name} - ${transaction.paymentMethod}`"
+    [text]="
+      transaction.account.name +
+      ' - ' +
+      (transaction.paymentMethod | enumLabel: paymentMethodLabels)
+    "
     [color]="transaction.account.color"
     [widthClass]="'w-full'" />
 

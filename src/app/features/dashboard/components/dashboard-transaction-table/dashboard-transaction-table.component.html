@@ -28,7 +28,11 @@
           </td>
           <td>
             <app-badge
-              [text]="row.account.name + ' - ' + row.paymentMethod"
+              [text]="
+                row.account.name +
+                ' - ' +
+                (row.paymentMethod | enumLabel: paymentMethodLabels)
+              "
               [color]="row.account.color"></app-badge>
           </td>
         </tr>

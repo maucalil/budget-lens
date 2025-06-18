@@ -13,9 +13,13 @@ import {
 })
 export class SelectComponent<T> extends BaseFormControlComponent {
   @Input() options: T[] = [];
-  @Input() optionLabelKey?: keyof T;
+  @Input() optionLabelKey?: keyof T | ((option: T) => string);
 
   resolveOptionLabel(option: T): string {
+    if (typeof this.optionLabelKey === 'function') {
+      return this.optionLabelKey(option);
+    }
+
     if (this.optionLabelKey && option[this.optionLabelKey] != null) {
       return String(option[this.optionLabelKey]);
     }

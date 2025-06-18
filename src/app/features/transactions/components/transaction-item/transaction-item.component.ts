@@ -7,15 +7,24 @@ import {
   faArrowTrendUp,
 } from '@fortawesome/free-solid-svg-icons';
 import { BadgeComponent } from '@shared/components';
-import { TransactionType } from '@shared/enums';
+import { paymentMethodLabels, TransactionType } from '@shared/enums';
+import { EnumLabelPipe } from '@shared/pipes';
 
 @Component({
   selector: 'app-transaction-item',
-  imports: [BadgeComponent, FontAwesomeModule, NgClass, CurrencyPipe],
+  imports: [
+    BadgeComponent,
+    FontAwesomeModule,
+    NgClass,
+    CurrencyPipe,
+    EnumLabelPipe,
+  ],
   templateUrl: './transaction-item.component.html',
   styleUrl: './transaction-item.component.scss',
 })
 export class TransactionItemComponent {
+  readonly paymentMethodLabels = paymentMethodLabels;
+
   @Input({ required: true }) transaction!: Transaction;
   @Output() selected = new EventEmitter<Transaction>();
 

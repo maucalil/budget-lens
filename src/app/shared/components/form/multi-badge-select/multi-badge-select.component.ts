@@ -13,7 +13,7 @@ import {
 })
 export class MultiBadgeSelectComponent<T> extends BaseFormControlComponent {
   @Input() options: T[] = [];
-  @Input() optionLabelKey?: keyof T;
+  @Input() optionLabelKey?: keyof T | ((option: T) => string);
   @Input() selectedColor = '#023c4d';
   @Input() unselectedColor = '#f5f5f561';
 
@@ -44,6 +44,10 @@ export class MultiBadgeSelectComponent<T> extends BaseFormControlComponent {
   }
 
   resolveOptionLabel(option: T): string {
+    if (typeof this.optionLabelKey === 'function') {
+      return this.optionLabelKey(option);
+    }
+
     if (this.optionLabelKey && option[this.optionLabelKey] != null) {
       return String(option[this.optionLabelKey]);
     }

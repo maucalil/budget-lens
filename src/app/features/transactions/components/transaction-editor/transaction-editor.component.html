@@ -2,7 +2,11 @@
   <div ngProjectAs="drawer-header" class="flex flex-wrap gap-3">
     @if (transaction && !isEditing()) {
       <app-button text="Editar" [icon]="faPen" (clicked)="edit()" />
-      <app-button text="Delete" type="danger" [icon]="faTrash" (clicked)="delete()" />
+      <app-button
+        text="Delete"
+        type="danger"
+        [icon]="faTrash"
+        (clicked)="delete()" />
     } @else {
       <app-button
         text="Salvar"
@@ -47,7 +51,8 @@
       [formActive]="isEditing()"
       [label]="'Tipo'"
       [placeholder]="'Tipo'"
-      [options]="transactionTypes" />
+      [options]="transactionTypes"
+      [optionLabelKey]="getTransactionTypeLabel" />
 
     <app-select
       [control]="transactionForm.controls.account"
@@ -62,7 +67,8 @@
       [formActive]="isEditing()"
       [label]="'Método de Pagamento'"
       [placeholder]="'Selecione um método de pagamento'"
-      [options]="paymentMethods()" />
+      [options]="paymentMethods()"
+      [optionLabelKey]="getPaymentMethodLabel" />
 
     <app-select
       [control]="transactionForm.controls.category"

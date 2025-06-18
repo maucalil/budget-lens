@@ -40,6 +40,7 @@
         [control]="accountForm.controls.paymentMethods"
         [formActive]="isEditing()"
         [options]="allPaymentMethods"
+        [optionLabelKey]="getPaymentMethodLabel"
         [label]="'Métodos de Pagamento'"
         [labelSize]="'lg'" />
     </div>
