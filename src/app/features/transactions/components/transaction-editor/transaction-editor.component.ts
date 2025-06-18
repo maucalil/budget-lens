@@ -100,7 +100,16 @@ export class TransactionEditorComponent implements OnInit, OnChanges {
 
     this.transactionForm.get('account')?.valueChanges.subscribe(account => {
       this.selectedAccount.set(account);
-      this.transactionForm.get('paymentMethod')?.reset();
+      const currentPaymentMethod =
+        this.transactionForm.get('paymentMethod')?.value;
+      const validMethods = this.paymentMethods();
+
+      if (
+        currentPaymentMethod &&
+        !validMethods.includes(currentPaymentMethod)
+      ) {
+        this.transactionForm.get('paymentMethod')?.reset();
+      }
     });
   }
 

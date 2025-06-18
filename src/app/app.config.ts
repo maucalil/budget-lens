@@ -5,7 +5,7 @@ import { routes } from './app.routes';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { provideEnvironmentNgxMask } from 'ngx-mask';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { apiResponseInterceptor } from '@core/interceptors';
+import { httpLifecycleInterceptor } from '@core/interceptors';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,6 +13,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideCharts(withDefaultRegisterables()),
     provideEnvironmentNgxMask({ decimalMarker: ',', thousandSeparator: '.' }),
-    provideHttpClient(withInterceptors([apiResponseInterceptor])),
+    provideHttpClient(withInterceptors([httpLifecycleInterceptor])),
   ],
 };

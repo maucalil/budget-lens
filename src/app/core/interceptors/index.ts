@@ -1,1 +1,1 @@
-export * from './api-response.interceptor';
+export * from './http-lifecycle.interceptor';

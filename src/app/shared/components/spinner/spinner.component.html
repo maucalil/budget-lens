@@ -1,0 +1,8 @@
+<div
+  class="flex justify-center items-center"
+  [ngClass]="inline ? 'inline-flex' : 'spinner-overlay w-screen h-screen'">
+  <fa-icon
+    [icon]="faCircleNotch"
+    [animation]="'spin'"
+    [size]="inline ? 'sm' : '3x'"></fa-icon>
+</div>

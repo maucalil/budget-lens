@@ -1,17 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterOutlet } from '@angular/router';
+import { LoaderService } from '@core/services';
+import { SpinnerComponent } from '@shared/components';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-layout',
-  imports: [SidebarComponent, RouterOutlet],
-  template: `
-    <div class="flex h-screen w-full">
-      <app-sidebar />
-      <main class="flex-1 px-4 py-3 overflow-y-auto">
-        <router-outlet />
-      </main>
-    </div>
-  `,
+  imports: [SpinnerComponent, SidebarComponent, RouterOutlet, AsyncPipe],
+  templateUrl: './layout.component.html',
 })
-export class LayoutComponent {}
+export class LayoutComponent {
+  loading$ = inject(LoaderService).loading$;
+}
