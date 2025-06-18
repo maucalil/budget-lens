@@ -96,7 +96,10 @@ export class TransactionEditorComponent implements OnInit, OnChanges {
     }
 
     if (this.transaction) {
-      this.transactionForm.patchValue(this.transaction);
+      this.transactionForm.patchValue({
+        ...this.transaction,
+        date: this.transaction.date.split('T')[0],
+      });
       this.selectedAccount.set(this.transaction.account);
       this.isEditing.set(false);
       return;
@@ -123,7 +126,7 @@ export class TransactionEditorComponent implements OnInit, OnChanges {
       return;
     }
 
-    const dto = this.transactionForm.getRawValue();
+    const dto = this.toTransactionCreateDto();
 
     this.submitted.emit(
       this.transaction === null
@@ -151,5 +154,21 @@ export class TransactionEditorComponent implements OnInit, OnChanges {
 
   edit(): void {
     this.isEditing.set(true);
+  }
+
+  // TODO - better solution for update dto type where fields can be optional
+  private toTransactionCreateDto(): TransactionCreateDto {
+    const { account, category, ...transactionFields } =
+      this.transactionForm.getRawValue();
+
+    return {
+      name: transactionFields.name!,
+      amount: transactionFields.amount!,
+      date: transactionFields.date!,
+      type: transactionFields.type!,
+      paymentMethod: transactionFields.paymentMethod!,
+      accountId: account!.id,
+      categoryId: category!.id,
+    };
   }
 }

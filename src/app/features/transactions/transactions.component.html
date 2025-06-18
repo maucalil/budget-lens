@@ -9,7 +9,7 @@
     (filterClicked)="openFilterPanel()" />
 
   <section class="transaction-list overflow-y-auto">
-    @for (group of groupedTransactions; track group.date) {
+    @for (group of groupedTransactions(); track group.date) {
       <div class="date-header-wrapper">
         <app-transaction-date-header
           [date]="group.date"
@@ -25,8 +25,8 @@
   </section>
 
   <app-transaction-editor
-    [isOpen]="isTransactionEditorOpen"
-    [transaction]="selectedTransaction"
+    [isOpen]="isTransactionEditorOpen()"
+    [transaction]="selectedTransaction()"
     (closed)="closeTransactionEditor()"
     (submitted)="onTransactionSubmission($event)" />
 </div>

@@ -19,5 +19,11 @@ export interface TransactionFilter {
   maxResults?: number;
 }
 
-export type TransactionCreateDto = Omit<Transaction, 'id'>;
+export type TransactionCreateDto = Omit<
+  Transaction,
+  'id' | 'account' | 'category'
+> & {
+  accountId: number;
+  categoryId: number;
+};
 export type TransactionUpdateDto = Partial<TransactionCreateDto>;

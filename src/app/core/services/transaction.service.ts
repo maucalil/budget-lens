@@ -17,7 +17,7 @@ export class TransactionService {
   private readonly baseUrl = `${environment.apiUrl}/transaction`;
   private http = inject(HttpClient);
 
-  getTransactions(filters?: TransactionFilter): Observable<Transaction[]> {
+  getAll(filters?: TransactionFilter): Observable<Transaction[]> {
     return this.http
       .get<ApiResponse<Transaction[]>>(this.baseUrl, {
         withCredentials: true,
@@ -29,7 +29,7 @@ export class TransactionService {
       );
   }
 
-  getTransaction(id: number): Observable<Transaction> {
+  getById(id: number): Observable<Transaction> {
     return this.http
       .get<ApiResponse<Transaction>>(`${this.baseUrl}/${id}`, {
         withCredentials: true,
@@ -40,9 +40,7 @@ export class TransactionService {
       );
   }
 
-  createTransaction(
-    transactionCreateDto: TransactionCreateDto
-  ): Observable<Transaction> {
+  create(transactionCreateDto: TransactionCreateDto): Observable<Transaction> {
     return this.http
       .post<ApiResponse<Transaction>>(this.baseUrl, transactionCreateDto, {
         withCredentials: true,
@@ -53,7 +51,7 @@ export class TransactionService {
       );
   }
 
-  updateTransaction(
+  update(
     id: number,
     transactionUpdateDto: TransactionUpdateDto
   ): Observable<Transaction> {
@@ -71,7 +69,7 @@ export class TransactionService {
       );
   }
 
-  deleteTransaction(id: number): Observable<void> {
+  delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`, {
       withCredentials: true,
     });
