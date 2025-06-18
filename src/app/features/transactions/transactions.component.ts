@@ -49,11 +49,20 @@ export class TransactionsComponent implements OnInit {
     this.selectedTransaction.set(transaction);
   }
 
+  onTransactionDeleted(transactionId: number) {
+    this.transactionService.delete(transactionId).subscribe({
+      next: () => {
+        this.loadAndGroupTransactions();
+        this.closeTransactionEditor();
+      },
+    });
+  }
+
   openFilterPanel() {
     console.log('Open Filter Panel'); // TODO
   }
 
-  onTransactionSubmission(
+  onTransactionSubmitted(
     transaction: TransactionCreateDto | TransactionUpdateDto
   ) {
     if (!this.selectedTransaction()) {
@@ -109,7 +118,7 @@ export class TransactionsComponent implements OnInit {
       }
 
       group.transactions.push(transaction);
-      group.totalAmount += transaction.amount;
+      group.totalAmount += Number(transaction.amount);
     }
 
     return result;

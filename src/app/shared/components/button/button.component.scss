@@ -36,6 +36,19 @@ button {
     }
   }
 
+  &.danger {
+    color: $color-text;
+    background-color: $color-error;
+
+    &:hover:not([disabled]) {
+      background-color: color.adjust($color-error, $lightness: -5%);
+    }
+
+    &:active:not([disabled]) {
+      background-color: color.adjust($color-error, $lightness: -10%);
+    }
+  }
+
   &[disabled] {
     cursor: not-allowed;
     box-shadow: none;

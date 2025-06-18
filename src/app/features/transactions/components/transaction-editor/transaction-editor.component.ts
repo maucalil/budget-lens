@@ -18,7 +18,12 @@ import {
   TransactionUpdateDto,
 } from '@core/models';
 import { AccountService, CategoryService } from '@core/services';
-import { faBan, faCheck, faPen } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBan,
+  faCheck,
+  faPen,
+  faTrash,
+} from '@fortawesome/free-solid-svg-icons';
 import { ButtonComponent } from '@shared/components';
 import { DrawerComponent } from '@shared/components/drawer/drawer.component';
 import { InputComponent, SelectComponent } from '@shared/components/form';
@@ -47,10 +52,12 @@ export class TransactionEditorComponent implements OnInit, OnChanges {
     TransactionCreateDto | TransactionUpdateDto
   >();
   @Output() closed = new EventEmitter<void>();
+  @Output() deleted = new EventEmitter<number>();
 
   faBan = faBan;
   faCheck = faCheck;
   faPen = faPen;
+  faTrash = faTrash;
 
   isEditing = signal(false);
 
@@ -154,6 +161,11 @@ export class TransactionEditorComponent implements OnInit, OnChanges {
 
   edit(): void {
     this.isEditing.set(true);
+  }
+
+  delete(): void {
+    this.deleted.emit(this.transaction!.id);
+    this.transactionForm.reset();
   }
 
   // TODO - better solution for update dto type where fields can be optional

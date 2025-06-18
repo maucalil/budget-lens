@@ -28,5 +28,6 @@
     [isOpen]="isTransactionEditorOpen()"
     [transaction]="selectedTransaction()"
     (closed)="closeTransactionEditor()"
-    (submitted)="onTransactionSubmission($event)" />
+    (deleted)="onTransactionDeleted($event)"
+    (submitted)="onTransactionSubmitted($event)" />
 </div>

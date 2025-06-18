@@ -2,6 +2,7 @@
   <div ngProjectAs="drawer-header" class="flex flex-wrap gap-3">
     @if (transaction && !isEditing()) {
       <app-button text="Editar" [icon]="faPen" (clicked)="edit()" />
+      <app-button text="Delete" type="danger" [icon]="faTrash" (clicked)="delete()" />
     } @else {
       <app-button
         text="Salvar"
