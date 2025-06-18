@@ -6,14 +6,18 @@ import {
   OnChanges,
   OnInit,
   inject,
+  signal,
+  computed,
 } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Account, Category, Transaction } from '@core/models';
+import { AccountService, CategoryService } from '@core/services';
 import { faBan, faCheck, faPen } from '@fortawesome/free-solid-svg-icons';
 import { ButtonComponent } from '@shared/components';
 import { DrawerComponent } from '@shared/components/drawer/drawer.component';
 import { InputComponent, SelectComponent } from '@shared/components/form';
 import { PaymentMethod } from '@shared/enums';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-transaction-editor',
@@ -38,13 +42,18 @@ export class TransactionEditorComponent implements OnInit, OnChanges {
   faCheck = faCheck;
   faPen = faPen;
 
-  isEditing = false;
-  categories: Category[] = []; // TODO get from database
-  accounts: Account[] = []; // TODO get from database
-  paymentMethods: PaymentMethod[] = []; // TODO get from accounts
+  isEditing = signal(false);
+
+  categories = signal<Category[]>([]);
+  accounts = signal<Account[]>([]);
+  selectedAccount = signal<Account | null>(null);
+  paymentMethods = computed(() => this.selectedAccount()?.paymentMethods ?? []);
+
   // TODO transaction types
 
   private fb = inject(FormBuilder);
+  private categoryService = inject(CategoryService);
+  private accountService = inject(AccountService);
 
   transactionForm = this.fb.group({
     name: this.fb.control<string | null>(null, [
@@ -65,17 +74,42 @@ export class TransactionEditorComponent implements OnInit, OnChanges {
   });
 
   ngOnInit(): void {
-    this.isEditing = !this.transaction;
+    this.isEditing.set(!this.transaction);
+
+    this.transactionForm.get('account')?.valueChanges.subscribe(account => {
+      this.selectedAccount.set(account);
+      this.transactionForm.get('paymentMethod')?.reset();
+    });
   }
 
   ngOnChanges(): void {
+    if (this.isOpen) {
+      this.loadEditorData();
+    }
+
     if (this.transaction) {
       this.transactionForm.patchValue(this.transaction);
-      this.isEditing = false;
+      this.selectedAccount.set(this.transaction.account);
+      this.isEditing.set(false);
       return;
     }
 
-    this.isEditing = true;
+    this.isEditing.set(true);
+  }
+
+  loadEditorData(): void {
+    forkJoin({
+      accounts: this.accountService.getAll(),
+      categories: this.categoryService.getAll(),
+    }).subscribe({
+      next: ({ accounts, categories }) => {
+        this.accounts.set(accounts);
+        this.categories.set(categories);
+      },
+      error: error => {
+        console.error('Failed to load form dependencies', error);
+      },
+    });
   }
 
   submit(): void {
@@ -90,7 +124,7 @@ export class TransactionEditorComponent implements OnInit, OnChanges {
   }
 
   close(): void {
-    this.isEditing = false;
+    this.isEditing.set(false);
     this.transactionForm.reset();
     this.closed.emit();
   }
@@ -98,7 +132,7 @@ export class TransactionEditorComponent implements OnInit, OnChanges {
   cancel(): void {
     if (this.transaction) {
       this.transactionForm.patchValue(this.transaction);
-      this.isEditing = false;
+      this.isEditing.set(false);
       return;
     }
 
@@ -106,6 +140,6 @@ export class TransactionEditorComponent implements OnInit, OnChanges {
   }
 
   edit(): void {
-    this.isEditing = true;
+    this.isEditing.set(true);
   }
 }

@@ -1,11 +1,5 @@
-import { GroupedTransactionsByDate, Transaction } from '@core/models';
+import { GroupedTransactionsByDate } from '@core/models';
 import { Currency, PaymentMethod } from '@shared/enums';
-
-export interface TransactionGroup {
-  date: string;
-  totalAmount: number;
-  transactions: Transaction[];
-}
 
 export const MOCK_GROUPED_TRANSACTIONS: GroupedTransactionsByDate[] = [
   {
@@ -19,7 +13,7 @@ export const MOCK_GROUPED_TRANSACTIONS: GroupedTransactionsByDate[] = [
         currency: Currency.BRL,
         date: '2025-05-28',
         isIncome: false,
-        category: { name: 'Alimentação', color: '#ea1d2c' },
+        category: { id: 1, name: 'Alimentação', color: '#ff0000' },
         account: {
           id: 1,
           name: 'Banco do Brasil',

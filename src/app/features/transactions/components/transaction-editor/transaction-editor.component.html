@@ -1,6 +1,6 @@
 <app-drawer [isOpen]="isOpen" (closed)="close()">
   <div ngProjectAs="drawer-header" class="flex flex-wrap gap-3">
-    @if (transaction && !isEditing) {
+    @if (transaction && !isEditing()) {
       <app-button text="Editar" [icon]="faPen" (clicked)="edit()" />
     } @else {
       <app-button
@@ -22,13 +22,13 @@
     [formGroup]="transactionForm">
     <app-input
       [control]="transactionForm.controls.name"
-      [formActive]="isEditing"
+      [formActive]="isEditing()"
       [label]="'Nome'"
       [placeholder]="'Nome'" />
 
     <app-input
       [control]="transactionForm.controls.amount"
-      [formActive]="isEditing"
+      [formActive]="isEditing()"
       [label]="'Valor'"
       [placeholder]="'Valor'"
       [mask]="'separator.2'"
@@ -36,37 +36,37 @@
 
     <app-input
       [control]="transactionForm.controls.date"
-      [formActive]="isEditing"
+      [formActive]="isEditing()"
       [label]="'Data'"
       [placeholder]="'dd/mm/yyyy'"
       [type]="'date'" />
 
     <app-select
       [control]="transactionForm.controls.account"
-      [formActive]="isEditing"
+      [formActive]="isEditing()"
       [label]="'Conta'"
       [placeholder]="'Selecione uma conta'"
-      [options]="accounts"
+      [options]="accounts()"
       [optionLabelKey]="'name'" />
 
     <app-select
       [control]="transactionForm.controls.paymentMethod"
-      [formActive]="isEditing"
+      [formActive]="isEditing()"
       [label]="'Método de Pagamento'"
       [placeholder]="'Selecione um método de pagamento'"
-      [options]="paymentMethods" />
+      [options]="paymentMethods()" />
 
     <app-select
       [control]="transactionForm.controls.category"
-      [formActive]="isEditing"
+      [formActive]="isEditing()"
       [label]="'Categoria'"
       [placeholder]="'Categoria'"
-      [options]="categories"
+      [options]="categories()"
       [optionLabelKey]="'name'" />
 
     <app-select
       [control]="transactionForm.controls.isIncome"
-      [formActive]="isEditing"
+      [formActive]="isEditing()"
       [label]="'Tipo'"
       [placeholder]="'Tipo'" />
   </form>

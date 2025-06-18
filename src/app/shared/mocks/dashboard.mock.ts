@@ -49,7 +49,7 @@ export const MOCK_DASHBOARD_TRANSACTIONS: DashboardTableRowData[] = [
       amount: 2000,
       paymentMethods: [PaymentMethod.CREDIT_CARD],
     },
-    category: { name: 'Supermercado', color: '#A79AFF' },
+    category: { id: 1, name: 'Supermercado', color: '#A79AFF' },
     paymentMethod: PaymentMethod.CREDIT_CARD,
     currency: Currency.BRL,
   },
