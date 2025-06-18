@@ -51,7 +51,7 @@ export const DASHBOARD_INCOME_EXPENSE_CHART_OPTIONS: ChartConfiguration['options
         grid: { display: false },
       },
       y: {
-        grace: '5%',
+        grace: '0%',
         border: { display: false },
         grid: { display: false },
         ticks: { display: false },

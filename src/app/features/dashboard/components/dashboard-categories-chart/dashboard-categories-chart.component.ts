@@ -1,4 +1,12 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  inject,
+  Input,
+  OnChanges,
+  OnInit,
+  signal,
+  SimpleChanges,
+} from '@angular/core';
 import { ChartConfiguration, ChartType } from 'chart.js';
 import {
   DASHBOARD_CATEGORIES_CHART_OPTIONS,
@@ -6,6 +14,7 @@ import {
 } from './dashboard-categories-chart.config';
 import { CardComponent } from '@shared/components';
 import { BaseChartDirective } from 'ng2-charts';
+import { AnalyticsService } from '@core/services/analytics.service';
 
 @Component({
   selector: 'app-dashboard-categories-chart',
@@ -13,47 +22,59 @@ import { BaseChartDirective } from 'ng2-charts';
   templateUrl: './dashboard-categories-chart.component.html',
   styleUrl: './dashboard-categories-chart.component.scss',
 })
-export class DashboardCategoriesChartComponent {
+export class DashboardCategoriesChartComponent implements OnInit, OnChanges {
+  @Input() month: string | number = new Date().getMonth() + 1;
+  @Input() year: string | number = new Date().getFullYear();
+
+  private analyticsService = inject(AnalyticsService);
+  isLoading = signal(true);
+
   chartData: ChartConfiguration['data'] = {
-    labels: [
-      'Alimentação',
-      'Moradia',
-      'Transporte',
-      'Entreterimento',
-      'Saúde',
-      'Investimentos',
-    ],
-    datasets: [
-      {
-        data: [450, 800, 300, 200, 150, 950],
-        backgroundColor: [
-          'rgba(255, 107, 107, 0.7)',
-          'rgba(254, 202, 87, 0.7)',
-          'rgba(84, 160, 255, 0.7)',
-          'rgba(29, 209, 161, 0.7)',
-          'rgba(255, 159, 243, 0.7)',
-          'rgba(72, 219, 251, 0.7)',
-          'rgba(0, 210, 211, 0.7)',
-          'rgba(200, 214, 229, 0.7)',
-        ],
-        borderColor: [
-          'rgba(255, 107, 107, 0.9)',
-          'rgba(254, 202, 87, 0.9)',
-          'rgba(84, 160, 255, 0.9)',
-          'rgba(29, 209, 161, 0.9)',
-          'rgba(255, 159, 243, 0.9)',
-          'rgba(72, 219, 251, 0.9)',
-          'rgba(0, 210, 211, 0.9)',
-          'rgba(200, 214, 229, 0.9)',
-        ],
-        borderWidth: 2,
-        hoverOffset: 4,
-      },
-    ],
+    labels: [],
+    datasets: [],
   };
 
   chartOptions: ChartConfiguration['options'] =
     DASHBOARD_CATEGORIES_CHART_OPTIONS;
 
   chartType: ChartType = DASHBOARD_CATEGORIES_CHART_TYPE;
+
+  ngOnInit(): void {
+    this.getExpensesByCategory();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['month'] || changes['year']) {
+      this.getExpensesByCategory();
+    }
+  }
+
+  private getExpensesByCategory(): void {
+    this.isLoading.set(true);
+    this.analyticsService
+      .getExpensesByCategory({
+        month: this.month,
+        year: this.year,
+      })
+      .subscribe({
+        next: data => {
+          this.chartData = {
+            labels: data.labels,
+            datasets: [
+              {
+                data: data.datasets[0].data,
+                backgroundColor: data.datasets[0].backgroundColor,
+                borderColor: data.datasets[0].backgroundColor,
+                borderWidth: 2,
+                hoverOffset: 4,
+              },
+            ],
+          };
+          this.isLoading.set(false);
+        },
+        error: () => {
+          this.isLoading.set(false);
+        },
+      });
+  }
 }

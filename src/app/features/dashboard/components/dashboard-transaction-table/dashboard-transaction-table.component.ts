@@ -7,9 +7,9 @@ import {
   faArrowTrendUp,
 } from '@fortawesome/free-solid-svg-icons';
 import { CardComponent } from '@shared/components';
-import { DashboardTableRowData } from '@features/dashboard/models/dashboard-table-row-data.interface';
-import { paymentMethodLabels } from '@shared/enums';
+import { paymentMethodLabels, TransactionType } from '@shared/enums';
 import { EnumLabelPipe } from '@shared/pipes';
+import { Transaction } from '@core/models';
 
 @Component({
   selector: 'app-dashboard-transaction-table',
@@ -26,8 +26,9 @@ import { EnumLabelPipe } from '@shared/pipes';
 export class DashboardTransactionTableComponent {
   readonly paymentMethodLabels = paymentMethodLabels;
 
+  transactionType = TransactionType;
   iconIncome = faArrowTrendUp;
   iconExpense = faArrowTrendDown;
 
-  @Input() rows: DashboardTableRowData[] = [];
+  @Input() rows: Transaction[] = [];
 }
