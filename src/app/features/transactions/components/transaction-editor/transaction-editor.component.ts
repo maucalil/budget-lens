@@ -114,9 +114,6 @@ export class TransactionEditorComponent implements OnInit, OnChanges {
         this.accounts.set(accounts);
         this.categories.set(categories);
       },
-      error: error => {
-        console.error('Failed to load form dependencies', error);
-      },
     });
   }
 

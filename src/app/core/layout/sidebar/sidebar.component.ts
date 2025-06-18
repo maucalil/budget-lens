@@ -51,9 +51,6 @@ export class SidebarComponent {
 
   logout() {
     this.authService.logout().subscribe({
-      error: err => {
-        console.error('Logout failed', err); // TODO better error handling
-      },
       complete: () => {
         this.isMobileVisible.set(false);
         this.router.navigate(['/authenticate']);

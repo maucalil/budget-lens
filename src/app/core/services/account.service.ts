@@ -61,13 +61,8 @@ export class AccountService {
   }
 
   delete(id: number): Observable<null> {
-    return this.http
-      .delete<ApiResponse<null>>(`${this.baseUrl}/${id}`, {
-        withCredentials: true,
-      })
-      .pipe(
-        filter(res => res.success),
-        map(res => res.data)
-      );
+    return this.http.delete<null>(`${this.baseUrl}/${id}`, {
+      withCredentials: true,
+    });
   }
 }

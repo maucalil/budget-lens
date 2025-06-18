@@ -24,9 +24,6 @@ export class AuthComponent {
       next: () => {
         this.router.navigate(['/dashboard']);
       },
-      error: () => {
-        console.error('Login failed. Please try again.');
-      },
     });
   }
 }
