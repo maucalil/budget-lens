@@ -10,13 +10,19 @@ import {
   computed,
 } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { Account, Category, Transaction } from '@core/models';
+import {
+  Account,
+  Category,
+  Transaction,
+  TransactionCreateDto,
+  TransactionUpdateDto,
+} from '@core/models';
 import { AccountService, CategoryService } from '@core/services';
 import { faBan, faCheck, faPen } from '@fortawesome/free-solid-svg-icons';
 import { ButtonComponent } from '@shared/components';
 import { DrawerComponent } from '@shared/components/drawer/drawer.component';
 import { InputComponent, SelectComponent } from '@shared/components/form';
-import { PaymentMethod } from '@shared/enums';
+import { PaymentMethod, TransactionType } from '@shared/enums';
 import { forkJoin } from 'rxjs';
 
 @Component({
@@ -32,10 +38,14 @@ import { forkJoin } from 'rxjs';
   styleUrl: './transaction-editor.component.scss',
 })
 export class TransactionEditorComponent implements OnInit, OnChanges {
+  readonly transactionTypes = [TransactionType.INCOME, TransactionType.EXPENSE];
+
   @Input() isOpen = false;
   @Input() transaction: Transaction | null = null;
 
-  @Output() submitted = new EventEmitter<Transaction>();
+  @Output() submitted = new EventEmitter<
+    TransactionCreateDto | TransactionUpdateDto
+  >();
   @Output() closed = new EventEmitter<void>();
 
   faBan = faBan;
@@ -48,8 +58,6 @@ export class TransactionEditorComponent implements OnInit, OnChanges {
   accounts = signal<Account[]>([]);
   selectedAccount = signal<Account | null>(null);
   paymentMethods = computed(() => this.selectedAccount()?.paymentMethods ?? []);
-
-  // TODO transaction types
 
   private fb = inject(FormBuilder);
   private categoryService = inject(CategoryService);
@@ -65,12 +73,12 @@ export class TransactionEditorComponent implements OnInit, OnChanges {
       Validators.min(0.01),
     ]),
     date: this.fb.control<string | null>(null, [Validators.required]),
+    type: this.fb.control<TransactionType | null>(null, [Validators.required]),
     account: this.fb.control<Account | null>(null, [Validators.required]),
     paymentMethod: this.fb.control<PaymentMethod | null>(null, [
       Validators.required,
     ]),
     category: this.fb.control<Category | null>(null, [Validators.required]),
-    isIncome: this.fb.control<boolean | null>(null, [Validators.required]),
   });
 
   ngOnInit(): void {
@@ -118,8 +126,13 @@ export class TransactionEditorComponent implements OnInit, OnChanges {
       return;
     }
 
-    const transaction = this.transactionForm.getRawValue() as Transaction;
-    this.submitted.emit(transaction);
+    const dto = this.transactionForm.getRawValue();
+
+    this.submitted.emit(
+      this.transaction === null
+        ? (dto as TransactionCreateDto)
+        : (dto as TransactionUpdateDto)
+    );
     this.close();
   }
 

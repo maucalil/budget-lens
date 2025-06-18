@@ -42,6 +42,13 @@
       [type]="'date'" />
 
     <app-select
+      [control]="transactionForm.controls.type"
+      [formActive]="isEditing()"
+      [label]="'Tipo'"
+      [placeholder]="'Tipo'"
+      [options]="transactionTypes" />
+
+    <app-select
       [control]="transactionForm.controls.account"
       [formActive]="isEditing()"
       [label]="'Conta'"
@@ -63,11 +70,5 @@
       [placeholder]="'Categoria'"
       [options]="categories()"
       [optionLabelKey]="'name'" />
-
-    <app-select
-      [control]="transactionForm.controls.isIncome"
-      [formActive]="isEditing()"
-      [label]="'Tipo'"
-      [placeholder]="'Tipo'" />
   </form>
 </app-drawer>

@@ -7,6 +7,7 @@ import {
   faArrowTrendUp,
 } from '@fortawesome/free-solid-svg-icons';
 import { BadgeComponent } from '@shared/components';
+import { TransactionType } from '@shared/enums';
 
 @Component({
   selector: 'app-transaction-item',
@@ -20,6 +21,10 @@ export class TransactionItemComponent {
 
   faArrowTrendUp = faArrowTrendUp;
   faArrowTrendDown = faArrowTrendDown;
+
+  get isIncome(): boolean {
+    return this.transaction.type === TransactionType.INCOME;
+  }
 
   onSelection() {
     this.selected.emit(this.transaction);

@@ -6,8 +6,8 @@
   (keydown.enter)="onSelection()">
   <span class="name flex items-center gap-3">
     <fa-icon
-      [icon]="transaction.isIncome ? faArrowTrendUp : faArrowTrendDown"
-      [ngClass]="transaction.isIncome ? 'income' : 'expense'" />
+      [icon]="isIncome ? faArrowTrendUp : faArrowTrendDown"
+      [ngClass]="isIncome ? 'income' : 'expense'" />
     {{ transaction.name }}
   </span>
 
@@ -23,7 +23,7 @@
     [color]="transaction.account.color"
     [widthClass]="'w-full'" />
 
-  <span class="amount" [ngClass]="transaction.isIncome ? 'income' : 'expense'">
-    {{ transaction.amount | currency: transaction.currency }}
+  <span class="amount" [ngClass]="isIncome ? 'income' : 'expense'">
+    {{ transaction.amount | currency: 'BRL' }}
   </span>
 </div>
