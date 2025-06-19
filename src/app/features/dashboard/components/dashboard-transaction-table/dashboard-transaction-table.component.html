@@ -45,5 +45,11 @@
         </tr>
       }
     </table>
+    @if (isEmpty) {
+      <div class="my-4">
+        <app-empty-state
+          [text]="'Você ainda não possui transações.'"></app-empty-state>
+      </div>
+    }
   </div>
 </app-card>

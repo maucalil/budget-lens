@@ -8,6 +8,12 @@
     (addClicked)="openTransactionEditor()"
     (filterClicked)="openFilterPanel()" />
 
+  @if (isEmpty) {
+    <div class="mt-4">
+      <app-empty-state [text]="'Você ainda não possui transações.'" />
+    </div>
+  }
+
   <section class="transaction-list overflow-y-auto">
     @for (group of groupedTransactions(); track group.date) {
       <div class="date-header-wrapper">

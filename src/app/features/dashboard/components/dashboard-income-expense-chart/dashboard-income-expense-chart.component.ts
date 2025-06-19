@@ -7,7 +7,7 @@ import {
   signal,
   SimpleChanges,
 } from '@angular/core';
-import { CardComponent } from '@shared/components';
+import { CardComponent, EmptyStateComponent } from '@shared/components';
 import { ChartConfiguration, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import {
@@ -18,7 +18,7 @@ import { AnalyticsService } from '@core/services/analytics.service';
 
 @Component({
   selector: 'app-dashboard-income-expense-chart',
-  imports: [BaseChartDirective, CardComponent],
+  imports: [BaseChartDirective, CardComponent, EmptyStateComponent],
   templateUrl: './dashboard-income-expense-chart.component.html',
   styleUrl: './dashboard-income-expense-chart.component.scss',
 })
@@ -81,5 +81,15 @@ export class DashboardIncomeExpenseChartComponent implements OnInit, OnChanges {
           this.isLoading.set(false);
         },
       });
+  }
+
+  get isEmpty(): boolean {
+    return (
+      !this.chartData ||
+      this.chartData.datasets.length === 0 ||
+      this.chartData.datasets.every(dataset =>
+        dataset.data.every(value => +(value ?? 0) === 0)
+      )
+    );
   }
 }

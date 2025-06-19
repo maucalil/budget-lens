@@ -1,5 +1,5 @@
 @if (showLogin) {
-  <app-login (register)="switchToRegister()"/>
+  <app-login (register)="switchToRegister()" />
 } @else {
-  <app-register (returnLogin)="switchToLogin()"/>
+  <app-register (returnLogin)="switchToLogin()" />
 }

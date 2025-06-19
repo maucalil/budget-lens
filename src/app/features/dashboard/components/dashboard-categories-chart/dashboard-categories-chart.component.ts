@@ -15,10 +15,11 @@ import {
 import { CardComponent } from '@shared/components';
 import { BaseChartDirective } from 'ng2-charts';
 import { AnalyticsService } from '@core/services/analytics.service';
+import { EmptyStateComponent } from '@shared/components';
 
 @Component({
   selector: 'app-dashboard-categories-chart',
-  imports: [BaseChartDirective, CardComponent],
+  imports: [BaseChartDirective, CardComponent, EmptyStateComponent],
   templateUrl: './dashboard-categories-chart.component.html',
   styleUrl: './dashboard-categories-chart.component.scss',
 })
@@ -76,5 +77,13 @@ export class DashboardCategoriesChartComponent implements OnInit, OnChanges {
           this.isLoading.set(false);
         },
       });
+  }
+
+  get isEmpty(): boolean {
+    return (
+      !this.chartData ||
+      this.chartData.datasets.length === 0 ||
+      !this.chartData.datasets[0].data.length
+    );
   }
 }

@@ -10,6 +10,7 @@ import {
 } from '@core/models';
 import { TransactionEditorComponent } from './components/transaction-editor/transaction-editor.component';
 import { TransactionService } from '@core/services';
+import { EmptyStateComponent } from '@shared/components';
 
 @Component({
   selector: 'app-transactions',
@@ -18,6 +19,7 @@ import { TransactionService } from '@core/services';
     TransactionEditorComponent,
     TransactionsHeaderComponent,
     TransactionItemComponent,
+    EmptyStateComponent,
   ],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.scss',
@@ -122,5 +124,9 @@ export class TransactionsComponent implements OnInit {
     }
 
     return result;
+  }
+
+  get isEmpty(): boolean {
+    return this.groupedTransactions().length === 0;
   }
 }

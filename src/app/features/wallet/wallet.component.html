@@ -5,7 +5,7 @@
       <h1 class="text-4xl">Carteira</h1>
     </div>
     <div class="flex gap-2 justify-end items-end">
-      <app-button text="Adicionar" [icon]="faPlus" (clicked)="onAdd()" />
+      <app-button text="Adicionar" [icon]="faPlus" (clicked)="onAdd()" [disabled]="isAdding()"/>
     </div>
   </div>
 
@@ -18,4 +18,10 @@
         (submitted)="onAccountSubmitted($event)" />
     }
   </div>
+  @if (isEmpty) {
+    <div class="mt-4">
+      <app-empty-state
+        [text]="'Você ainda não possui contas.'"></app-empty-state>
+    </div>
+  }
 </div>
