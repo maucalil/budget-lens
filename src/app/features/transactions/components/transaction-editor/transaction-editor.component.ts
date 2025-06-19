@@ -81,6 +81,7 @@ export class TransactionEditorComponent implements OnInit, OnChanges {
     name: this.fb.control<string | null>(null, [
       Validators.required,
       Validators.minLength(3),
+      Validators.maxLength(100),
     ]),
     amount: this.fb.control<number | null>(null, [
       Validators.required,

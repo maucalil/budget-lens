@@ -20,7 +20,10 @@ export class LoginComponent {
   private fb = inject(FormBuilder);
 
   authForm = this.fb.group({
-    email: this.fb.control<string | null>(null, [Validators.required]),
+    email: this.fb.control<string | null>(null, [
+      Validators.required,
+      Validators.email,
+    ]),
     password: this.fb.control<string | null>(null, [Validators.required]),
   });
 

@@ -24,16 +24,16 @@ export class RegisterComponent {
   authForm = this.fb.group({
     email: this.fb.control<string | null>(null, [
       Validators.required,
-      Validators.minLength(3),
       Validators.email,
     ]),
     password: this.fb.control<string | null>(null, [
       Validators.required,
-      Validators.minLength(3),
+      Validators.minLength(6),
     ]),
     name: this.fb.control<string | null>(null, [
       Validators.required,
       Validators.minLength(3),
+      Validators.maxLength(50),
     ]),
   });
 

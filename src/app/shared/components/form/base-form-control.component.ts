@@ -1,5 +1,6 @@
 import {
   Component,
+  DoCheck,
   Input,
   OnChanges,
   OnInit,
@@ -14,7 +15,7 @@ type TextSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 @Component({
   template: '',
 })
-export class BaseFormControlComponent implements OnInit, OnChanges {
+export class BaseFormControlComponent implements OnInit, OnChanges, DoCheck {
   private static _nextId = 0;
 
   @Input() label = '';
@@ -28,6 +29,7 @@ export class BaseFormControlComponent implements OnInit, OnChanges {
   fieldId = `form-field-id-${BaseFormControlComponent._nextId++}`;
 
   protected _state: State = 'editable';
+  private _prevTouched = false;
 
   ngOnInit() {
     this.updateState();
@@ -36,6 +38,14 @@ export class BaseFormControlComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['formActive']) {
+      this.updateState();
+    }
+  }
+
+  // TODO find a more perfomatic way
+  ngDoCheck() {
+    if (this.control.touched !== this._prevTouched) {
+      this._prevTouched = this.control.touched;
       this.updateState();
     }
   }
