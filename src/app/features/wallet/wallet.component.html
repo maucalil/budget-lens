@@ -13,8 +13,9 @@
     @for (account of accounts(); track $index) {
       <app-wallet-account
         [account]="account"
-        (closed)="onClosed()"
-        (submitted)="onSubmitted($event)" />
+        (closed)="onAccountClosed()"
+        (deleted)="onAccountDeleted($event)"
+        (submitted)="onAccountSubmitted($event)" />
     }
   </div>
 </div>

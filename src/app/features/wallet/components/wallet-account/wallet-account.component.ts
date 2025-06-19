@@ -46,6 +46,7 @@ export class WalletAccountComponent implements OnChanges, OnInit {
 
   @Output() submitted = new EventEmitter<AccountCreateDto | AccountUpdateDto>();
   @Output() closed = new EventEmitter<void>();
+  @Output() deleted = new EventEmitter<number>();
 
   isEditing = signal(false);
   allPaymentMethods = Object.values(PaymentMethod);
@@ -128,6 +129,6 @@ export class WalletAccountComponent implements OnChanges, OnInit {
   }
 
   delete() {
-    this.isEditing.update(() => false);
+    this.deleted.emit(this.account!.id);
   }
 }

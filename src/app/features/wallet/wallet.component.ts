@@ -13,35 +13,32 @@ import { AccountService } from '@core/services';
 })
 export class WalletComponent implements OnInit {
   accounts = signal<(Account | null)[]>([]);
-  isLoading = signal(true);
 
   faPlus = faPlus;
 
   private accountService = inject(AccountService);
 
   ngOnInit(): void {
-    this.accountService.getAll().subscribe({
-      next: data => {
-        this.accounts.set(data);
-        this.isLoading.set(false);
-      },
-      error: () => {
-        this.isLoading.set(false);
-      },
-    });
+    this.loadAccounts();
   }
 
   onAdd(): void {
     this.accounts.update(accounts => [null, ...accounts]);
   }
 
-  onClosed(): void {
+  onAccountClosed(): void {
     if (this.accounts().length && this.accounts()[0] === null) {
       this.accounts.update(accounts => accounts.slice(1));
     }
   }
 
-  onSubmitted(dto: AccountCreateDto | AccountUpdateDto): void {
+  onAccountDeleted(accountId: number) {
+    this.accountService.delete(accountId).subscribe({
+      next: () => this.loadAccounts(),
+    });
+  }
+
+  onAccountSubmitted(dto: AccountCreateDto | AccountUpdateDto): void {
     const [first, ...existingAccounts] = this.accounts();
 
     if (first === null) {
@@ -58,6 +55,14 @@ export class WalletComponent implements OnInit {
 
     this.accountService.update(first.id, dto as AccountUpdateDto).subscribe({
       next: updated => this.accounts.set([updated, ...existingAccounts]),
+    });
+  }
+
+  private loadAccounts(): void {
+    this.accountService.getAll().subscribe({
+      next: data => {
+        this.accounts.set(data);
+      },
     });
   }
 }
