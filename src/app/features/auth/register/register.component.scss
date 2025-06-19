@@ -1,0 +1,17 @@
+@use 'utils/colors' as *;
+
+.title {
+  font-family: 'Abril Fatface', sans-serif;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.link:hover {
+  color: $color-primary;
+}
+
+.icon {
+  cursor: pointer;
+}

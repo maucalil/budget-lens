@@ -1,1 +1,5 @@
-<app-button [text]="'LOGIN'" (clicked)="login()" />
+@if (showLogin) {
+  <app-login (register)="switchToRegister()"/>
+} @else {
+  <app-register (returnLogin)="switchToLogin()"/>
+}

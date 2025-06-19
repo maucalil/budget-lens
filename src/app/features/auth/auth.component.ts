@@ -1,29 +1,22 @@
-import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserLoginDto } from '@core/models';
-import { AuthService } from '@core/services';
-import { ButtonComponent } from '@shared/components';
+import { Component } from '@angular/core';
+
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @Component({
   selector: 'app-auth',
-  imports: [ButtonComponent],
+  imports: [LoginComponent, RegisterComponent],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss',
 })
 export class AuthComponent {
-  private authService = inject(AuthService);
-  private router = inject(Router);
+  showLogin = true;
 
-  login(): void {
-    const data: UserLoginDto = {
-      email: 'teste@teste.com',
-      password: 'teste123',
-    };
+  switchToRegister(): void {
+    this.showLogin = false;
+  }
 
-    this.authService.login(data).subscribe({
-      next: () => {
-        this.router.navigate(['/dashboard']);
-      },
-    });
+  switchToLogin(): void {
+    this.showLogin = true;
   }
 }
