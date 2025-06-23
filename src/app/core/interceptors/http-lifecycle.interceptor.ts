@@ -6,10 +6,13 @@ import {
 import { inject } from '@angular/core';
 import { ApiResponse } from '@core/models';
 import { LoaderService } from '@core/services';
+import { SnackbarService } from '@core/services/snackbar.service';
 import { tap } from 'rxjs';
 
 export const httpLifecycleInterceptor: HttpInterceptorFn = (req, next) => {
   const loader = inject(LoaderService);
+  const snackbar = inject(SnackbarService);
+
   loader.show();
 
   return next(req).pipe(
@@ -18,20 +21,21 @@ export const httpLifecycleInterceptor: HttpInterceptorFn = (req, next) => {
         if (event instanceof HttpResponse) {
           loader.hide();
           const body = event.body as ApiResponse<unknown>;
-          // TODO add snackbar instead of loggin on console
           if (body == null) {
-            console.log('[HTTP Success]', req.method, req.url);
+            snackbar.show(`Success: ${req.method} ${req.url}`, 'info');
             return;
           }
 
           if (body.success) {
             console.log('[HTTP Success]', req.method, req.url, body.data);
+            snackbar.show(`Success: ${req.method} ${req.url}`, 'info');
           }
         }
       },
       error: (err: HttpErrorResponse) => {
         loader.hide();
         console.error('[HTTP Error]', req.method, req.url, err.error);
+        snackbar.show(`Error: ${req.method} ${req.url}`, 'error');
       },
     })
   );

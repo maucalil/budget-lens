@@ -4,10 +4,17 @@ import { RouterOutlet } from '@angular/router';
 import { LoaderService } from '@core/services';
 import { SpinnerComponent } from '@shared/components';
 import { AsyncPipe } from '@angular/common';
+import { SnackbarComponent } from './snackbar/snackbar.component';
 
 @Component({
   selector: 'app-layout',
-  imports: [SpinnerComponent, SidebarComponent, RouterOutlet, AsyncPipe],
+  imports: [
+    SnackbarComponent,
+    SpinnerComponent,
+    SidebarComponent,
+    RouterOutlet,
+    AsyncPipe,
+  ],
   templateUrl: './layout.component.html',
 })
 export class LayoutComponent {

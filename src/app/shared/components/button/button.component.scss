@@ -49,6 +49,10 @@ button {
     }
   }
 
+  &.transparent {
+    background-color: transparent;
+  }
+
   &[disabled] {
     cursor: not-allowed;
     box-shadow: none;
