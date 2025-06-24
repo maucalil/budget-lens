@@ -1,6 +1,6 @@
 @if (state()) {
   <div
-    class="flex items-center justify-between gap-3 p-2 w-full"
+    class="flex items-center justify-between gap-3 px-2 py-1 w-full"
     [ngClass]="state()!.type">
     <span>{{ state()!.message }}</span>
     <app-button type="transparent" [icon]="faXmark" (clicked)="close()" />

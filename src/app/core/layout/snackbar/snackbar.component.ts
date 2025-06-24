@@ -1,6 +1,6 @@
 import { NgClass } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
-import { SnackbarService } from '@core/services/snackbar.service';
+import { SnackbarService } from '@core/services';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { ButtonComponent } from '@shared/components';

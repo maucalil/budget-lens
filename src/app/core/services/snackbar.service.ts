@@ -15,7 +15,7 @@ export class SnackbarService {
 
   readonly state = computed(() => this._state());
 
-  show(message: string, type: SnackbarType = 'success', durationMs = 200000) {
+  show(message: string, type: SnackbarType = 'success', durationMs = 3000) {
     this._state.set({ message, type });
     setTimeout(() => this._state.set(null), durationMs);
   }
