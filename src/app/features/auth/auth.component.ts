@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { SnackbarComponent } from '@core/layout/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-auth',
-  imports: [LoginComponent, RegisterComponent],
+  imports: [LoginComponent, RegisterComponent, SnackbarComponent],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss',
 })

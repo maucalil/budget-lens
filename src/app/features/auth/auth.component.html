@@ -1,5 +1,8 @@
-@if (showLogin) {
-  <app-login (register)="switchToRegister()" />
-} @else {
-  <app-register (returnLogin)="switchToLogin()" />
-}
+<div class="w-screen h-screen px-4 py-3">
+  @if (showLogin) {
+    <app-login (register)="switchToRegister()" />
+  } @else {
+    <app-register (returnLogin)="switchToLogin()" />
+  }
+  <app-snackbar />
+</div>
