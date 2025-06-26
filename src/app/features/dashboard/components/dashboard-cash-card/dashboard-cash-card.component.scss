@@ -1,9 +1,11 @@
+@use 'utils/colors' as *;
+
 .amount {
   font-weight: 500;
-  color: var(--color-text);
+  color: $color-text;
 }
 
 .name {
   font-weight: 400;
-  color: var(--color-text-medium);
+  color: $color-text-medium;
 }

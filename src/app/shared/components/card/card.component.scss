@@ -1,5 +1,7 @@
+@use 'utils/colors' as *;
+
 .card {
-  background-color: var(--color-surface);
-  color: var(--color-text);
+  background-color: $color-surface;
+  color: $color-text;
   border-radius: 1rem;
 }

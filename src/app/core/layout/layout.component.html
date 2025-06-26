@@ -1,0 +1,10 @@
+<div class="flex h-screen w-full">
+  @if (loading$ | async) {
+    <app-spinner />
+  }
+  <app-sidebar />
+  <main class="flex-1 px-4 py-3 overflow-y-auto">
+    <router-outlet />
+    <app-snackbar />
+  </main>
+</div>

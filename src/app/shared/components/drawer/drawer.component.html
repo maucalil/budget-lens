@@ -1,0 +1,21 @@
+<div
+  class="backdrop h-screen w-screen"
+  [class.visible]="isOpen"
+  tabindex="0"
+  role="button"
+  aria-label="Close drawer"
+  (click)="close()"
+  (keydown.enter)="close()"></div>
+
+<aside
+  class="flex flex-col h-screen w-full w-3/4-md w-1/2-lg max-w-140"
+  [class.open]="isOpen">
+  <header class="flex justify-between items-center gap-3 px-3 py-2">
+    <ng-content select="drawer-header" />
+    <app-button text="Fechar" [icon]="faXmark" (clicked)="close()" />
+  </header>
+
+  <section class="overflow-y-auto p-3">
+    <ng-content select="drawer-content" />
+  </section>
+</aside>

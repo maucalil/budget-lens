@@ -1,0 +1,18 @@
+<app-form-field
+  [label]="label"
+  [labelSize]="labelSize"
+  [fieldId]="fieldId"
+  [isInvalid]="isInvalid"
+  [errorMessage]="errorMessage">
+  <input
+    class="form-control px-3 py-2"
+    [class]="classes"
+    [id]="fieldId"
+    [type]="type"
+    [formControl]="control"
+    [attr.placeholder]="placeholder"
+    [readonly]="isReadOnly"
+    [mask]="mask"
+    [prefix]="prefix"
+    (blur)="onBlur()" />
+</app-form-field>

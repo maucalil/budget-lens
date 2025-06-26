@@ -1,0 +1,22 @@
+<app-form-field
+  [label]="label"
+  [labelSize]="labelSize"
+  [fieldId]="fieldId"
+  [isInvalid]="isInvalid"
+  [errorMessage]="errorMessage">
+  <select
+    class="form-control text-md px-3 py-2"
+    [class]="classes"
+    [class.placeholder-selected]="control.value === null"
+    [id]="fieldId"
+    [formControl]="control"
+    [compareWith]="compareObjects"
+    (blur)="onBlur()">
+    <option [ngValue]="null" disabled selected>{{ placeholder }}</option>
+    @for (option of options; track $index) {
+      <option [ngValue]="option">
+        {{ resolveOptionLabel(option) }}
+      </option>
+    }
+  </select>
+</app-form-field>

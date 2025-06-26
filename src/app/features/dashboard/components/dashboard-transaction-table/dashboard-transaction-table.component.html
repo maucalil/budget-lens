@@ -1,4 +1,4 @@
-<app-shared-card>
+<app-card>
   <h2 class="text-xl mb-2">Transações Recentes</h2>
 
   <div class="overflow-x-auto">
@@ -15,24 +15,41 @@
         <tr>
           <td>
             <fa-icon
-              [icon]="row.isIncome ? iconIncome : iconExpense"
-              [ngClass]="row.isIncome ? 'iconIncome' : 'iconExpense'"></fa-icon>
+              [icon]="
+                row.type === transactionType.INCOME ? iconIncome : iconExpense
+              "
+              [ngClass]="
+                row.type === transactionType.INCOME
+                  ? 'iconIncome'
+                  : 'iconExpense'
+              ">
+            </fa-icon>
           </td>
           <td>{{ row.name }}</td>
-          <td>{{ row.amount | currency: row.currency }}</td>
+          <td>{{ row.amount | currency: 'BRL' }}</td>
           <td>{{ row.date }}</td>
           <td>
-            <app-shared-badge
+            <app-badge
               [text]="row.category.name"
-              [color]="row.category.color"></app-shared-badge>
+              [color]="row.category.color"></app-badge>
           </td>
           <td>
-            <app-shared-badge
-              [text]="row.account.name + ' - ' + row.paymentMethod"
-              [color]="row.account.color"></app-shared-badge>
+            <app-badge
+              [text]="
+                row.account.name +
+                ' - ' +
+                (row.paymentMethod | enumLabel: paymentMethodLabels)
+              "
+              [color]="row.account.color"></app-badge>
           </td>
         </tr>
       }
     </table>
+    @if (isEmpty) {
+      <div class="my-4">
+        <app-empty-state
+          [text]="'Você ainda não possui transações.'"></app-empty-state>
+      </div>
+    }
   </div>
-</app-shared-card>
+</app-card>

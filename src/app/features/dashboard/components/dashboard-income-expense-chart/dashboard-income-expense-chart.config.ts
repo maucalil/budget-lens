@@ -27,9 +27,8 @@ export const DASHBOARD_INCOME_EXPENSE_CHART_OPTIONS: ChartConfiguration['options
           boxWidth: 12,
           boxHeight: 12,
           font: {
-            family: 'Lato',
-            size: 16,
-            weight: 500,
+            family: 'Poppins',
+            size: 15,
           },
           color: '#f5f5f5',
         },
@@ -52,7 +51,7 @@ export const DASHBOARD_INCOME_EXPENSE_CHART_OPTIONS: ChartConfiguration['options
         grid: { display: false },
       },
       y: {
-        grace: '5%',
+        grace: '0%',
         border: { display: false },
         grid: { display: false },
         ticks: { display: false },

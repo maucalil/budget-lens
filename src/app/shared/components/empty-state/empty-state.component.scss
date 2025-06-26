@@ -1,0 +1,9 @@
+@use 'utils/colors' as *;
+
+.icon {
+  color: $color-primary;
+}
+
+span {
+  color: $color-text-medium;
+}

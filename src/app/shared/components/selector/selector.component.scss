@@ -1,0 +1,25 @@
+@use 'utils/colors' as *;
+
+select {
+  background-color: $color-bg;
+  color: $color-text;
+  border: 2px solid $color-grey;
+  border-radius: 10px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $color-surface;
+  }
+}
+
+option {
+  background-color: $color-bg;
+  color: $color-text;
+}

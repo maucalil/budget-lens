@@ -1,0 +1,12 @@
+@use 'utils/colors' as *;
+
+.icon {
+  width: 16px;
+  height: 16px;
+  color: $color-text-bg;
+  cursor: pointer;
+}
+
+.badge {
+  cursor: pointer;
+}

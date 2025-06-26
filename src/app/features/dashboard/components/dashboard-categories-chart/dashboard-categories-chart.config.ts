@@ -23,9 +23,14 @@ function onChartResize(chart: Chart, size: { width: number; height: number }) {
 
 function formatTooltipLabel(context: TooltipItem<'doughnut'>): string {
   const dataset = context.dataset;
-  const data = dataset.data as number[];
+  const rawData = dataset.data as unknown[];
+  const data = rawData.map(val =>
+    typeof val === 'number' ? val : Number(val)
+  );
   const total = data.reduce((sum, val) => sum + val, 0);
-  const value = context.raw as number;
+  const value =
+    typeof context.raw === 'number' ? context.raw : Number(context.raw);
+
   const percentage = total ? ((value / total) * 100).toFixed(1) : '0';
   return `${percentage}% (${value})`;
 }
@@ -52,9 +57,8 @@ export const DASHBOARD_CATEGORIES_CHART_OPTIONS: ChartConfiguration['options'] =
           boxHeight: 12,
           padding: 25,
           font: {
-            family: 'Lato',
-            size: 16,
-            weight: 500,
+            family: 'Poppins',
+            size: 15,
           },
           color: '#f5f5f5',
         },

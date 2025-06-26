@@ -1,3 +1,10 @@
-<div class="badge inline-block px-3 py-1" [style.background-color]="color">
-  <p>{{ text }}</p>
-</div>
+<span
+  class="badge inline-block px-3 py-1"
+  [ngClass]="widthClass"
+  [style.background-color]="color"
+  (click)="onClick()"
+  role="button"
+  (keydown.enter)="onClick()"
+  tabindex="0">
+  {{ text }}
+</span>

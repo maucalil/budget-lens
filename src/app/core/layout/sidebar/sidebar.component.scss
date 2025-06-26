@@ -1,8 +1,9 @@
-@use '../../../../styles/utils/breakpoints' as bp;
+@use 'utils/breakpoints' as bp;
+@use 'utils/colors' as *;
 
 .toggle-btn {
   position: absolute;
-  background-color: var(--color-surface);
+  background-color: $color-surface;
   opacity: 50%;
   border-radius: 3rem;
   z-index: 1000;
@@ -17,12 +18,16 @@
 nav {
   position: fixed;
   z-index: 999;
-  background-color: var(--color-surface);
+  background-color: $color-surface;
   transition: transform 0.4s ease-in-out;
   transform: translateX(-100%);
 
   &.visible-mobile {
     transform: translateX(0);
+  }
+
+  .title {
+    font-family: 'Abril Fatface', sans-serif;
   }
 
   @include bp.respond-min(sm) {
@@ -34,25 +39,15 @@ nav {
     &.expanded {
       width: 16rem;
     }
-
-    span {
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      white-space: nowrap;
-    }
-
-    &.expanded span {
-      opacity: 1;
-    }
   }
 
   header {
     position: relative;
-    border-bottom: 1px solid var(--color-text-medium);
+    border-bottom: 1px solid $color-text-medium;
 
     .expansion-btn {
       position: absolute;
-      background-color: var(--color-surface);
+      background-color: $color-surface;
       border-radius: 50%;
       top: 37%;
       right: -32px;
@@ -74,7 +69,7 @@ a {
 
   &:hover,
   &.active {
-    background-color: var(--color-primary);
-    color: var(--color-text);
+    background-color: $color-primary;
+    color: $color-text;
   }
 }

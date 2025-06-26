@@ -1,5 +1,5 @@
 @use 'sass:color';
-@use '../../../../styles/utils/colors' as *;
+@use 'utils/colors' as *;
 
 button {
   border-radius: 0.25rem;
@@ -8,10 +8,9 @@ button {
   position: relative;
   font-size: 1rem;
   font-weight: 600;
-  min-width: 128px;
   transition: all 0.2s ease;
 
-  &.btn-primary {
+  &.primary {
     color: $color-text;
     background-color: $color-primary;
 
@@ -24,7 +23,7 @@ button {
     }
   }
 
-  &.btn-secondary {
+  &.secondary {
     color: $color-primary;
     background-color: $color-secondary;
 
@@ -35,6 +34,23 @@ button {
     &:active:not([disabled]) {
       background-color: color.adjust($color-secondary-variant, $lightness: -5%);
     }
+  }
+
+  &.danger {
+    color: $color-text;
+    background-color: $color-error;
+
+    &:hover:not([disabled]) {
+      background-color: color.adjust($color-error, $lightness: -5%);
+    }
+
+    &:active:not([disabled]) {
+      background-color: color.adjust($color-error, $lightness: -10%);
+    }
+  }
+
+  &.transparent {
+    background-color: transparent;
   }
 
   &[disabled] {

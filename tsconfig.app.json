@@ -7,11 +7,11 @@
     "baseUrl": "./",
     "paths": {
       "@core/*": ["src/app/core/*"],
-      "@features/*": ["app/features/*"],
+      "@features/*": ["src/app/features/*"],
       "@shared/*": ["src/app/shared/*"],
-      "@models/*": ["src/app/models/*"]
+      "@env/*": ["src/environments/*"]
     },
-    "types": []
+    "types": ["@angular/localize"]
   },
   "files": ["src/main.ts"],
   "include": ["src/**/*.d.ts"]

@@ -1,0 +1,81 @@
+<app-drawer [isOpen]="isOpen" (closed)="close()">
+  <div ngProjectAs="drawer-header" class="flex flex-wrap gap-3">
+    @if (transaction && !isEditing()) {
+      <app-button text="Editar" [icon]="faPen" (clicked)="edit()" />
+      <app-button
+        text="Delete"
+        type="danger"
+        [icon]="faTrash"
+        (clicked)="delete()" />
+    } @else {
+      <app-button
+        text="Salvar"
+        [icon]="faCheck"
+        [disabled]="!transactionForm.valid"
+        (clicked)="submit()" />
+      <app-button
+        type="secondary"
+        text="Cancelar"
+        [icon]="faBan"
+        (clicked)="cancel()" />
+    }
+  </div>
+
+  <form
+    ngProjectAs="drawer-content"
+    class="flex flex-col gap-3"
+    [formGroup]="transactionForm">
+    <app-input
+      [control]="transactionForm.controls.name"
+      [formActive]="isEditing()"
+      [label]="'Nome'"
+      [placeholder]="'Nome'" />
+
+    <app-input
+      [control]="transactionForm.controls.amount"
+      [formActive]="isEditing()"
+      [label]="'Valor'"
+      [placeholder]="'Valor'"
+      [mask]="'separator.2'"
+      [prefix]="'R$ '" />
+
+    <app-input
+      [control]="transactionForm.controls.date"
+      [formActive]="isEditing()"
+      [label]="'Data'"
+      [placeholder]="'dd/mm/yyyy'"
+      [type]="'date'" />
+
+    <app-select
+      [control]="transactionForm.controls.type"
+      [formActive]="isEditing()"
+      [label]="'Tipo'"
+      [placeholder]="'Tipo'"
+      [options]="transactionTypes"
+      [optionLabelKey]="getTransactionTypeLabel" />
+
+    <app-select
+      [control]="transactionForm.controls.account"
+      [formActive]="isEditing()"
+      [label]="'Conta'"
+      [placeholder]="'Selecione uma conta'"
+      [options]="accounts()"
+      [optionLabelKey]="'name'" />
+
+    <app-select
+      [control]="transactionForm.controls.paymentMethod"
+      [formActive]="isEditing()"
+      [label]="'Método de Pagamento'"
+      [placeholder]="'Selecione um método de pagamento'"
+      [options]="paymentMethods()"
+      [optionLabelKey]="getPaymentMethodLabel" />
+
+    <app-select
+      [control]="transactionForm.controls.category"
+      [formActive]="isEditing()"
+      [label]="'Categoria'"
+      [placeholder]="'Categoria'"
+      [options]="categories()"
+      [optionLabelKey]="'name'" />
+  </form>
+</app-drawer>

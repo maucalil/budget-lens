@@ -1,0 +1,22 @@
+@use 'utils/colors' as *;
+
+div {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: bottom center;
+  border-radius: 4px;
+  color: $color-white;
+  z-index: 9999;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition:
+    transform 0.2s ease-out,
+    opacity 0.2s ease-out;
+
+  &.show {
+    transform: translateX(-50%) scaleY(1);
+    opacity: 1;
+  }
+}

@@ -6,27 +6,27 @@ BudgetLens is an application designed to help you take control of your personal 
 
 ## ✨ Features
 
-* **Account Management:** Register all your financial accounts (e.g., bank accounts).
-* **Budgeting:**
-    * Set global budgets for your overall finances.
-    * Define specific budgets for individual accounts.
-* **Payment Methods:** Configure available payment methods for each account (e.g., bank transfer, credit card, debit card, Pix, cash).
-* **Transaction Tracking:**
-    * Manually log your income and expenses.
-    * Include details like transaction name, value, date, and category (e.g., Food, Health, Transport, Entertainment, Salary).
-    * Assign each transaction to a specific account and payment method.
-* **Interactive Dashboard:**
-    * Visualize **Income vs. Expenses** with an easy-to-understand chart.
-    * Analyze your spending patterns with an **Expense per Category** chart.
-    * Quickly view your **Most Recent Transactions**.
-    * Stay updated on your **Budget status**, **Total Balance**, and other key financial metrics.
+- **Account Management:** Register all your financial accounts (e.g., bank accounts).
+- **Budgeting:**
+  - Set global budgets for your overall finances.
+  - Define specific budgets for individual accounts.
+- **Payment Methods:** Configure available payment methods for each account (e.g., bank transfer, credit card, debit card, Pix, cash).
+- **Transaction Tracking:**
+  - Manually log your income and expenses.
+  - Include details like transaction name, value, date, and category (e.g., Food, Health, Transport, Entertainment, Salary).
+  - Assign each transaction to a specific account and payment method.
+- **Interactive Dashboard:**
+  - Visualize **Income vs. Expenses** with an easy-to-understand chart.
+  - Analyze your spending patterns with an **Expense per Category** chart.
+  - Quickly view your **Most Recent Transactions**.
+  - Stay updated on your **Budget status**, **Total Balance**, and other key financial metrics.
 
 ---
 
 ## 🛠️ Technologies Used
 
-* **Angular**
-* **Chart.js**
+- **Angular**
+- **Chart.js**
 
 ---
 
@@ -37,8 +37,9 @@ Follow these instructions to get the project up and running on your local machin
 ### Prerequisites
 
 Ensure you have Node.js and the Angular CLI installed on your system.
-* Node.js: [https://nodejs.org/](https://nodejs.org/)
-* Angular CLI: `npm install -g @angular/cli`
+
+- Node.js: [https://nodejs.org/](https://nodejs.org/)
+- Angular CLI: `npm install -g @angular/cli`
 
 ### Installation & Running
 

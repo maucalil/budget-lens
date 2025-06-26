@@ -1,10 +1,15 @@
 <button
-  [ngClass]="{
-    'btn-primary': type === 'primary',
-    'btn-secondary': type === 'secondary',
-  }"
+  [class]="type"
   [disabled]="disabled"
   (click)="handleClick()"
-  class="inline-flex justify-center items-center p-3">
-  <ng-content></ng-content>
+  class="inline-flex justify-center items-center px-3 py-2">
+  @if (icon) {
+    <fa-icon [icon]="icon" size="sm" />
+  }
+
+  @if (text) {
+    <span [class.ml-2]="icon">
+      {{ text }}
+    </span>
+  }
 </button>

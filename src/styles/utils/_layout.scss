@@ -100,6 +100,17 @@
   align-items: stretch;
 }
 
+// Text alignment
+.text-center {
+  text-align: center;
+}
+.text-start {
+  text-align: start;
+}
+.text-end {
+  text-align: end;
+}
+
 // Gap
 .gap-1 {
   gap: 0.25rem;
@@ -195,6 +206,16 @@
     }
     .items-stretch-#{$name} {
       align-items: stretch;
+    }
+
+    .text-center-#{$name} {
+      text-align: center;
+    }
+    .text-start-#{$name} {
+      text-align: start;
+    }
+    .text-end-#{$name} {
+      text-align: end;
     }
 
     .grid-flow-row-#{$name} {

@@ -1,6 +1,8 @@
 // Import tokens if needed
 @use 'sass:map';
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@use 'utils/colors' as *;
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 *,
 *::before,
@@ -9,14 +11,31 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Inter', sans-serif;
+
+  /* Scroll Style*/
+  scrollbar-color: rgba(100, 100, 100, 0.4) transparent;
+  scrollbar-width: thin;
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 100, 100, 0.4);
+    border-radius: 3px;
+  }
 }
 
 // Body
 body {
   overflow-x: hidden;
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: $color-bg;
+  color: $color-text;
 }
 
 // Headings
@@ -28,7 +47,7 @@ h5,
 h6 {
   font-weight: 600;
   line-height: 1.2;
-  color: var(--color-text);
+  color: $color-text;
 }
 
 h1 {
@@ -52,11 +71,11 @@ h6 {
 
 // Links
 a {
-  color: var(--color-text);
+  color: $color-text;
   text-decoration: none;
 
   &:hover {
-    color: var(--color-medium);
+    color: $color-text-medium;
   }
 }
 
@@ -66,5 +85,5 @@ button {
   cursor: pointer;
   border: none;
   background: none;
-  color: var(--color-text);
+  color: $color-text;
 }
