@@ -106,12 +106,14 @@ export class TransactionsComponent implements OnInit {
     const result: GroupedTransactionsByDate[] = [];
 
     for (const transaction of transactions) {
-      const dateKey = new Date(transaction.date).toDateString();
+      const dateKey = transaction.date.split('T')[0];
 
       let group = map.get(dateKey);
       if (!group) {
+        const [year, month, day] = dateKey.split('-').map(Number);
+
         group = {
-          date: new Date(transaction.date),
+          date: new Date(year, month - 1, day),
           totalAmount: 0,
           transactions: [],
         };

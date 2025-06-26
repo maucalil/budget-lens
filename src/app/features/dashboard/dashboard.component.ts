@@ -135,11 +135,8 @@ export class DashboardComponent implements OnInit {
         next: data => {
           this.transactions = data.map(transaction => {
             const formattedDate =
-              this.datePipe.transform(
-                transaction.date,
-                'dd/MM/yyyy',
-                'America/Sao_Paulo'
-              ) ?? '';
+              this.datePipe.transform(transaction.date, 'dd/MM/yyyy', 'UTC') ??
+              '';
 
             return {
               id: transaction.id,
