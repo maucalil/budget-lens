@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://budget-lens-api-production.up.railway.app',
+  apiUrl: 'https://budget-lens-api-production.up.railway.app/api/v1',
 };
