@@ -1,14 +1,13 @@
-<div
-  class="w-full h-screen flex flex-col items-center justify-center gap-4 px-4">
-  <div class="w-full w-1/3-lg flex items-center justify-center">
-    <fa-icon
-      [icon]="faChevronLeft"
-      class="icon"
-      (click)="returnLoginClick()"></fa-icon>
+<form
+  [formGroup]="authForm"
+  (ngSubmit)="register()"
+  class="flex flex-col items-center justify-center gap-4 w-full h-full">
+  <div class="flex items-center justify-center w-full w-3/4-sm w-1/3-lg">
+    <fa-icon [icon]="faChevronLeft" class="icon" (click)="returnLoginClick()" />
     <span class="flex-1 title font-bold text-4xl text-center">BudgetLens</span>
   </div>
   <span class="font-bold text-2xl">Criar Conta</span>
-  <div class="flex flex-col gap-3 w-full w-1/3-lg">
+  <div class="flex flex-col gap-3 w-full w-3/4-sm w-1/3-lg">
     <app-input
       [control]="authForm.controls.name"
       [formActive]="true"
@@ -26,5 +25,5 @@
       [label]="'Senha'"
       [placeholder]="'Insira sua senha'" />
   </div>
-  <app-button [text]="'CRIAR CONTA'" (clicked)="register()" />
-</div>
+  <app-button type="submit" [text]="'CRIAR CONTA'" />
+</form>

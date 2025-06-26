@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserCreateDto } from '@core/models';
 import { AuthService } from '@core/services';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -9,7 +9,12 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-register',
-  imports: [ButtonComponent, InputComponent, FontAwesomeModule],
+  imports: [
+    ButtonComponent,
+    InputComponent,
+    FontAwesomeModule,
+    ReactiveFormsModule,
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
