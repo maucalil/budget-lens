@@ -85,7 +85,7 @@ export class WalletAccountComponent implements OnChanges, OnInit {
 
     if (changes['account']) {
       if (newAccount) {
-        this.accountForm.reset();
+        this.accountForm.reset({ color: '#000000' });
       } else if (this.account) {
         this.accountForm.patchValue(this.account);
       }
