@@ -14,17 +14,19 @@
 }
 
 <section class="transaction-list overflow-y-auto">
-  @for (group of groupedTransactions(); track group.date) {
+  @for (group of groupedTransactions(); track group.date; let isLastGroup = $last) {
     <div class="date-header-wrapper">
       <app-transaction-date-header
         [date]="group.date"
         [totalAmount]="group.totalAmount" />
     </div>
 
-    @for (transaction of group.transactions; track transaction.id) {
+    @for (transaction of group.transactions; track transaction.id; let isLastTransaction = $last) {
       <app-transaction-item
         [transaction]="transaction"
-        (selected)="onTransactionSelected($event)" />
+        (selected)="onTransactionSelected($event)"
+        [isLast]="isLastTransaction && isLastGroup"
+         />
     }
   }
 </section>

@@ -26,6 +26,7 @@ export class TransactionItemComponent {
   readonly paymentMethodLabels = paymentMethodLabels;
 
   @Input({ required: true }) transaction!: Transaction;
+  @Input() isLast = false;
   @Output() selected = new EventEmitter<Transaction>();
 
   faArrowTrendUp = faArrowTrendUp;
