@@ -1,39 +1,39 @@
-<div class="flex flex-col h-full">
-  <div>
-    <p class="text-xl mb-1">Hi, you!</p>
-    <h1 class="text-4xl mb-3">Transações</h1>
-  </div>
-
-  <app-transactions-header
-    (addClicked)="openTransactionEditor()"
-    (filterClicked)="openFilterPanel()" />
-
-  @if (isEmpty) {
-    <div class="mt-4">
-      <app-empty-state [text]="'Você ainda não possui transações.'" />
-    </div>
-  }
-
-  <section class="transaction-list overflow-y-auto">
-    @for (group of groupedTransactions(); track group.date) {
-      <div class="date-header-wrapper">
-        <app-transaction-date-header
-          [date]="group.date"
-          [totalAmount]="group.totalAmount" />
-      </div>
-
-      @for (transaction of group.transactions; track transaction.id) {
-        <app-transaction-item
-          [transaction]="transaction"
-          (selected)="onTransactionSelected($event)" />
-      }
-    }
-  </section>
-
-  <app-transaction-editor
-    [isOpen]="isTransactionEditorOpen()"
-    [transaction]="selectedTransaction()"
-    (closed)="closeTransactionEditor()"
-    (deleted)="onTransactionDeleted($event)"
-    (submitted)="onTransactionSubmitted($event)" />
+<div>
+  <p class="text-xl mb-1">Hi, you!</p>
+  <h1 class="text-4xl mb-3">Transações</h1>
 </div>
+
+<app-transactions-header
+  (addClicked)="openTransactionEditor()"
+  (filterClicked)="openFilterPanel()" />
+
+@if (isEmpty) {
+  <div class="mt-4">
+    <app-empty-state [text]="'Você ainda não possui transações.'" />
+  </div>
+}
+
+<section class="transaction-list overflow-y-auto">
+  @for (group of groupedTransactions(); track group.date; let isLastGroup = $last) {
+    <div class="date-header-wrapper">
+      <app-transaction-date-header
+        [date]="group.date"
+        [totalAmount]="group.totalAmount" />
+    </div>
+
+    @for (transaction of group.transactions; track transaction.id; let isLastTransaction = $last) {
+      <app-transaction-item
+        [transaction]="transaction"
+        (selected)="onTransactionSelected($event)"
+        [isLast]="isLastTransaction && isLastGroup"
+         />
+    }
+  }
+</section>
+
+<app-transaction-editor
+  [isOpen]="isTransactionEditorOpen()"
+  [transaction]="selectedTransaction()"
+  (closed)="closeTransactionEditor()"
+  (deleted)="onTransactionDeleted($event)"
+  (submitted)="onTransactionSubmitted($event)" />

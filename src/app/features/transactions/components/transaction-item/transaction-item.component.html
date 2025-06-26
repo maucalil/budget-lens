@@ -1,5 +1,6 @@
 <div
   class="transaction-item grid p-3 gap-3"
+  [class.last]="isLast"
   tabindex="0"
   role="button"
   (click)="onSelection()"

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserLoginDto } from '@core/models';
 import { AuthService } from '@core/services';
@@ -8,7 +8,7 @@ import { InputComponent } from '@shared/components/form';
 
 @Component({
   selector: 'app-login',
-  imports: [ButtonComponent, InputComponent],
+  imports: [ButtonComponent, InputComponent, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })

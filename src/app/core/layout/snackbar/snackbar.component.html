@@ -1,7 +1,7 @@
 <div
-  class="flex items-center justify-between gap-3 px-2 py-1"
+  class="flex items-center justify-between gap-3 pl-3 py-1"
   [class.show]="!!state()"
   [ngClass]="state()?.type">
   <span>{{ state()?.message }}</span>
-  <app-button type="transparent" [icon]="faXmark" (clicked)="close()" />
+  <app-button variant="transparent" [icon]="faXmark" (clicked)="close()" />
 </div>
