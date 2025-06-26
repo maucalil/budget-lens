@@ -15,12 +15,12 @@
       <div class="flex gap-3 mb-2">
         <app-button
           (clicked)="isEditing() ? save() : edit()"
-          [type]="'primary'"
+          variant="primary"
           [icon]="isEditing() ? faCheck : faEdit"
           [disabled]="isEditing() && accountForm.invalid" />
         <app-button
           (clicked)="isEditing() ? cancel() : delete()"
-          [type]="'secondary'"
+          variant="secondary"
           [icon]="isEditing() ? faXmark : faTrash" />
       </div>
     </div>
