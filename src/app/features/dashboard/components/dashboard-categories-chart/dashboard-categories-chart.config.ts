@@ -1,25 +1,4 @@
-import { Chart, ChartConfiguration, ChartType, TooltipItem } from 'chart.js';
-
-const LEGEND_POSITION_SWITCH_WIDTH = 615;
-const LEGEND_VISIBILITY_SWITCH_WIDTH = 358;
-
-function onChartResize(chart: Chart, size: { width: number; height: number }) {
-  const chartWidth = size.width;
-  const legendOptions = chart.options.plugins!.legend!;
-
-  const shouldShowLegend = chartWidth >= LEGEND_VISIBILITY_SWITCH_WIDTH;
-  const preferredPosition =
-    chartWidth < LEGEND_POSITION_SWITCH_WIDTH ? 'bottom' : 'left';
-
-  const isDisplayChanged = legendOptions.display !== shouldShowLegend;
-  const isPositionChanged = legendOptions.position !== preferredPosition;
-
-  if (!isDisplayChanged && !isPositionChanged) return;
-
-  legendOptions.display = shouldShowLegend;
-  legendOptions.position = preferredPosition;
-  chart.update();
-}
+import { ChartConfiguration, ChartType, TooltipItem } from 'chart.js';
 
 function formatTooltipLabel(context: TooltipItem<'doughnut'>): string {
   const dataset = context.dataset;
@@ -41,15 +20,15 @@ export const DASHBOARD_CATEGORIES_CHART_OPTIONS: ChartConfiguration['options'] =
   {
     maintainAspectRatio: false,
     responsive: true,
-    onResize: onChartResize,
     elements: {
       arc: {
         borderColor: 'transparent',
+        hoverOffset: 4,
       },
     },
     plugins: {
       legend: {
-        position: 'left',
+        position: 'bottom',
         align: 'center',
         labels: {
           usePointStyle: true,

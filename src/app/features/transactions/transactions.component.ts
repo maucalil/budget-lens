@@ -11,6 +11,7 @@ import {
 import { TransactionEditorComponent } from './components/transaction-editor/transaction-editor.component';
 import { TransactionService } from '@core/services';
 import { EmptyStateComponent } from '@shared/components';
+import { TransactionType } from '@shared/enums';
 
 @Component({
   selector: 'app-transactions',
@@ -122,7 +123,10 @@ export class TransactionsComponent implements OnInit {
       }
 
       group.transactions.push(transaction);
-      group.totalAmount += Number(transaction.amount);
+
+      const amount = Number(transaction.amount);
+      group.totalAmount +=
+        transaction.type === TransactionType.EXPENSE ? -amount : amount;
     }
 
     return result;

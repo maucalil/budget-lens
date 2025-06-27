@@ -168,7 +168,10 @@ export class TransactionEditorComponent implements OnInit, OnChanges {
 
   cancel(): void {
     if (this.transaction) {
-      this.transactionForm.patchValue(this.transaction);
+      this.transactionForm.patchValue({
+        ...this.transaction,
+        date: this.transaction.date.split('T')[0],
+      });
       this.isEditing.set(false);
       return;
     }

@@ -65,9 +65,6 @@ export class DashboardCategoriesChartComponent implements OnInit, OnChanges {
               {
                 data: data.datasets[0].data,
                 backgroundColor: data.datasets[0].backgroundColor,
-                borderColor: data.datasets[0].backgroundColor,
-                borderWidth: 2,
-                hoverOffset: 4,
               },
             ],
           };

@@ -10,3 +10,8 @@ export interface Account {
 
 export type AccountCreateDto = Omit<Account, 'id'>;
 export type AccountUpdateDto = Partial<AccountCreateDto>;
+
+export interface AccountSubmissionPayload {
+  dto: AccountCreateDto | AccountUpdateDto;
+  id: number | null;
+}
