@@ -45,6 +45,7 @@ export const DASHBOARD_CATEGORIES_CHART_OPTIONS: ChartConfiguration['options'] =
     elements: {
       arc: {
         borderColor: 'transparent',
+        hoverOffset: 4,
       },
     },
     plugins: {
