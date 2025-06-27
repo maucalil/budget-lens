@@ -1,6 +1,11 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { WalletAccountComponent } from './components/wallet-account/wallet-account.component';
-import { Account, AccountCreateDto, AccountUpdateDto } from '@core/models';
+import {
+  Account,
+  AccountCreateDto,
+  AccountSubmissionPayload,
+  AccountUpdateDto,
+} from '@core/models';
 import { ButtonComponent } from '@shared/components';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { AccountService } from '@core/services';
@@ -44,32 +49,31 @@ export class WalletComponent implements OnInit {
     });
   }
 
-  onAccountSubmitted(dto: AccountCreateDto | AccountUpdateDto): void {
+  onAccountSubmitted(accountPayload: AccountSubmissionPayload): void {
     this.isAdding.set(false);
-    const [first, ...existingAccounts] = this.accounts();
+    const currentAccounts = this.accounts();
 
-    if (first === null) {
-      this.accountService.create(dto as AccountCreateDto).subscribe({
-        next: created => this.accounts.set([created, ...existingAccounts]),
-        error: () => {
-          this.accounts.set(existingAccounts);
-        },
-      });
+    if (accountPayload.id === null) {
+      this.accountService
+        .create(accountPayload.dto as AccountCreateDto)
+        .subscribe({
+          next: () => this.loadAccounts(),
+          error: () => this.accounts.set(currentAccounts.slice(1)),
+        });
       return;
     }
 
-    if (!first) return;
-
-    this.accountService.update(first.id, dto as AccountUpdateDto).subscribe({
-      next: updated => this.accounts.set([updated, ...existingAccounts]),
-    });
+    this.accountService
+      .update(accountPayload.id, accountPayload.dto as AccountUpdateDto)
+      .subscribe({
+        next: () => this.loadAccounts(),
+        error: () => this.accounts.set(currentAccounts),
+      });
   }
 
   private loadAccounts(): void {
     this.accountService.getAll().subscribe({
-      next: data => {
-        this.accounts.set(data);
-      },
+      next: data => this.accounts.set(data),
     });
   }
 
