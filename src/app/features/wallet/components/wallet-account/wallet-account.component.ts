@@ -66,7 +66,7 @@ export class WalletAccountComponent implements OnChanges, OnInit {
   accountForm = this.formBuilder.group({
     name: this.formBuilder.control<string | null>(null, [
       Validators.required,
-      Validators.minLength(3),
+      Validators.minLength(2),
     ]),
     color: this.formBuilder.control<string | null>(null, [
       Validators.pattern(/^#[0-9A-Fa-f]{6}$/),
