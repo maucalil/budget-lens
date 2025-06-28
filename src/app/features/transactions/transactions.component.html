@@ -1,7 +1,4 @@
-<div>
-  <p class="text-xl mb-1">Hi, you!</p>
-  <h1 class="text-4xl mb-3">Transações</h1>
-</div>
+<h1 class="text-4xl mb-3">Transações</h1>
 
 <app-transactions-header
   (addClicked)="openTransactionEditor()"
@@ -14,19 +11,26 @@
 }
 
 <section class="transaction-list overflow-y-auto">
-  @for (group of groupedTransactions(); track group.date; let isLastGroup = $last) {
+  @for (
+    group of groupedTransactions();
+    track group.date;
+    let isLastGroup = $last
+  ) {
     <div class="date-header-wrapper">
       <app-transaction-date-header
         [date]="group.date"
         [totalAmount]="group.totalAmount" />
     </div>
 
-    @for (transaction of group.transactions; track transaction.id; let isLastTransaction = $last) {
+    @for (
+      transaction of group.transactions;
+      track transaction.id;
+      let isLastTransaction = $last
+    ) {
       <app-transaction-item
         [transaction]="transaction"
         (selected)="onTransactionSelected($event)"
-        [isLast]="isLastTransaction && isLastGroup"
-         />
+        [isLast]="isLastTransaction && isLastGroup" />
     }
   }
 </section>
