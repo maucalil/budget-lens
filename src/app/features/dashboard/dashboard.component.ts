@@ -99,7 +99,7 @@ export class DashboardComponent implements OnInit {
             {
               amount: data.balance,
               currency: Currency.BRL,
-              name: 'Saldo Total',
+              name: 'Balanço Total',
               icon: faBalanceScale,
             },
             {
